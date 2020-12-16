@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="pl.covid19.ui.mainFragment.MainFragment"
+        android:label="@string/mywatch"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_prognose_fragment"
+            app:destination="@id/prognose_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_addFragment"
+            app:destination="@id/addFragment"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_main_fragment_to_viewFragment"
+            app:destination="@id/viewFragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_addActivity2"
+            app:destination="@id/addActivity"
+            app:popUpTo="@id/main_fragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/prognose_fragment"
+        android:name="pl.covid19.ui.PrognoseFragment"
+        android:label="@string/prognose"
+        tools:layout="@layout/fragment_prognose">
+        <action
+            android:id="@+id/action_prognose_fragment_to_other_fragment"
+            app:destination="@id/other_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/other_fragment"
+        android:name="pl.covid19.ui.other.OtherFragment"
+        android:label="@string/Other"
+        tools:layout="@layout/fragment_other" >
+        <action
+            android:id="@+id/action_other_fragment_to_otherViewFragment"
+            app:destination="@id/otherViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="pl.covid19.ui.add.AddFragment"
+        android:label="AddFragment">
+        <action
+            android:id="@+id/action_addFragment_to_main_fragment"
+            app:destination="@id/main_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="pl.covid19.ui.view.ViewFragment"
+        android:label="ViewFragment">
+        <action
+            android:id="@+id/action_viewFragment_to_main_fragment"
+            app:destination="@id/main_fragment" />
+        <argument
+            android:name="viewCovidKey"
+            app:argType="long" />
+        <argument
+            android:name="viewCovidDate"
+            app:argType="string" />
+    </fragment>
+
+    <activity
+        android:id="@+id/addActivity"
+        android:name="pl.covid19.ui.add.AddActivity"
+        android:label="AddActivity" />
+    <fragment
+        android:id="@+id/otherViewFragment"
+        android:name="pl.covid19.ui.other.OtherViewFragment"
+        android:label="OtherViewFragment" >
+        <action
+            android:id="@+id/action_otherViewFragment_to_other_fragment"
+            app:destination="@id/other_fragment" />
+        <argument
+            android:name="OtherViewKey"
+            app:argType="integer" />
+        <argument
+            android:name="OtherViewName"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="areaGF"
+            type="pl.covid19.database.AreaDBGOVPLXDBFazyDB" />
+
+        <variable
+            name="clickListener2"
+            type="pl.covid19.ui.mainFragment.AreasGFListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/col"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_margin="2dp"
+        android:onClick="@{() -> clickListener2.onClick(areaGF)}"
+        android:orientation="vertical"
+        android:padding="4dp"
+        app:mybackground="@{areaGF.fazy.color}">
+
+        <TextView
+            android:id="@+id/textType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{areaGF.area.typetoItem()}"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@{areaGF.area.name +areaGF.govpl.liczba}"
+            android:text="@{areaGF.area.name}"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textType"
+            app:layout_constraintStart_toEndOf="@+id/textType" />
+         <TextView
+            android:id="@+id/textValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{Integer.toString(areaGF.govpl.liczba)}"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textName"
+            app:layout_constraintStart_toEndOf="@+id/textName" />
+        <TextView
+            android:id="@+id/textIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="32sp"
+            app:evalAvgIndicator10="@{areaGF}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textName"
+            app:layout_constraintStart_toEndOf="@+id/textValue" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

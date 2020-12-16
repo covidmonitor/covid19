@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.add.AddActivity"
+        app:defaultNavHost="true">
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/regionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            app:checkedChip="@+id/polandAll"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:singleLine="false"
+            app:singleSelection="true" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/SpinerVoviev"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/array_voiev"
+            android:spinnerMode="dropdown"
+            app:customVisibility="@{viewModel.showVoiev}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/regionList"
+            tools:setOnItemSelectedListener="@{viewModel.clicksVoievListener}" />
+
+
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/SpinerPoviat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/array_poviats"
+            android:hint="@array/array_poviats"
+            android:spinnerMode="dropdown"
+            app:customVisibility="@{viewModel.showPoviat}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/regionList"
+            tools:setOnItemSelectedListener="@{viewModel.clicksPoviatsListener}" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:customVisibility="@{viewModel.idValue!=null}"
+                android:onClick="@{() -> viewModel.onSubmitApplication()}"
+                android:text="@string/submit" />
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="pl.covid19.ui.add.AddActivityViewModel" />
+    </data>
+</layout>

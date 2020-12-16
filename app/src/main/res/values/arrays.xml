@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="chipsName">
+        <item>POLSKA</item>
+        <item>Województwo</item>
+        <item>Powiat</item>
+        <!--  <item>Z GPS</item>-->
+    </string-array>
+
+    <string-array name="array_voiev">
+        <item>---wybierz----</item>
+        <item>Dolnośląskie</item>
+        <item>Kujawsko-Pomorskie</item>
+        <item>Lubuskie</item>
+        <item>Lubelskie</item>
+        <item>Łódzkie</item>
+        <item>Małopolskie</item>
+        <item>Mazowieckie</item>
+        <item>Opolskie</item>
+        <item>Podkarpackie</item>
+        <item>Podlaskie</item>
+        <item>Pomorskie</item>
+        <item>Śląskie</item>
+        <item>Świętokrzyskie</item>
+        <item>Warmińsko-Mazurskie</item>
+        <item>Wielkopolskie</item>
+        <item>Zachodniopomorskie</item>
+    </string-array>
+
+    <string-array name="array_voiev_gus">
+        <item>-1</item>
+        <item>t0200</item>
+        <item>t0400</item>
+        <item>t0800</item>
+        <item>t0600</item>
+        <item>t1000</item>
+        <item>t1200</item>
+        <item>t1400</item>
+        <item>t1600</item>
+        <item>t1800</item>
+        <item>t2000</item>
+        <item>t2200</item>
+        <item>t2400</item>
+        <item>t2600</item>
+        <item>t2800</item>
+        <item>t3000</item>
+        <item>t3200</item>
+    </string-array>
+
+    <string-array name="array_poviats">
+        <item>---wybierz----</item>
+        <item>bolesławiecki(DOLN)</item>
+        <item>dzierżoniowski(DOLN)</item>
+        <item>głogowski(DOLN)</item>
+        <item>górowski(DOLN)</item>
+        <item>jaworski(DOLN)</item>
+        <item>Jelenia Góra-Miasto(DOLN)</item>
+        <item>jeleniogórski(DOLN)</item>
+        <item>kamiennogórski(DOLN)</item>
+        <item>kłodzki(DOLN)</item>
+        <item>Legnica-Miasto(DOLN)</item>
+        <item>legnicki(DOLN)</item>
+        <item>lubański(DOLN)</item>
+        <item>lubiński(DOLN)</item>
+        <item>lwówecki(DOLN)</item>
+        <item>milicki(DOLN)</item>
+        <item>oleśnicki(DOLN)</item>
+        <item>oławski(DOLN)</item>
+        <item>polkowicki(DOLN)</item>
+        <item>strzeliński(DOLN)</item>
+        <item>średzki(DOLN)</item>
+        <item>świdnicki(DOLN)</item>
+        <item>trzebnicki(DOLN)</item>
+        <item>Wałbrzych-Miasto(DOLN)</item>
+        <item>wałbrzyski(DOLN)</item>
+        <item>wołowski(DOLN)</item>
+        <item>Wrocław-Miasto(DOLN)</item>
+        <item>wrocławski(DOLN)</item>
+        <item>ząbkowicki(DOLN)</item>
+        <item>zgorzelecki(DOLN)</item>
+        <item>złotoryjski(DOLN)</item>
+
+
+
+        <item>aleksandrowski(KUJA)</item>
+        <item>brodnicki(KUJA)</item>
+        <item>bydgoski(KUJA)</item>
+        <item>Bydgoszcz-Miasto(KUJA)</item>
+        <item>chełmiński(KUJA)</item>
+        <item>golubsko-dobrzyński(KUJA)</item>
+        <item>grudziądzki(KUJA)</item>
+        <item>Grudziądz-Miasto(KUJA)</item>
+        <item>inowrocławski(KUJA)</item>
+        <item>lipnowski(KUJA)</item>
+        <item>mogileński(KUJA)</item>
+        <item>nakielski(KUJA)</item>
+        <item>radziejowski(KUJA)</item>
+        <item>rypiński(KUJA)</item>
+        <item>sępoleński(KUJA)</item>
+        <item>świecki(KUJA)</item>
+        <item>toruński(KUJA)</item>
+        <item>Toruń-Miasto(KUJA)</item>
+        <item>tucholski(KUJA)</item>
+        <item>wąbrzeski(KUJA)</item>
+        <item>włocławski(KUJA)</item>
+        <item>Włocławek-Miasto(KUJA)</item>
+        <item>żniński(KUJA)</item>
+
+
+
+        <item>bialski(LUBE)</item>
+        <item>Biała Podlaska-Miasto(LUBE)</item>
+        <item>biłgorajski(LUBE)</item>
+        <item>chełmski(LUBE)</item>
+        <item>Chełm-Miasto(LUBE)</item>
+        <item>hrubieszowski(LUBE)</item>
+        <item>janowski(LUBE)</item>
+        <item>krasnostawski(LUBE)</item>
+        <item>kraśnicki(LUBE)</item>
+        <item>lubartowski(LUBE)</item>
+        <item>lubelski(LUBE)</item>
+        <item>Lublin-Miasto(LUBE)</item>
+        <item>łęczyński(LUBE)</item>
+        <item>łukowski(LUBE)</item>
+        <item>opolski(LUBE)</item>
+        <item>parczewski(LUBE)</item>
+        <item>puławski(LUBE)</item>
+        <item>radzyński(LUBE)</item>
+        <item>rycki(LUBE)</item>
+        <item>świdnicki(LUBE)</item>
+        <item>tomaszowski(LUBE)</item>
+        <item>włodawski(LUBE)</item>
+        <item>zamojski(LUBE)</item>
+        <item>Zamość-Miasto(LUBE)</item>
+
+
+
+        <item>gorzowski(LUBU)</item>
+        <item>Gorzów Wielkopolski-Miasto(LUBU)</item>
+        <item>krośnieński(LUBU)</item>
+        <item>międzyrzecki(LUBU)</item>
+        <item>nowosolski(LUBU)</item>
+        <item>słubicki(LUBU)</item>
+        <item>strzelecko-drezdenecki(LUBU)</item>
+        <item>sulęciński(LUBU)</item>
+        <item>świebodziński(LUBU)</item>
+        <item>zielonogórski(LUBU)</item>
+        <item>Zielona Góra-Miasto(LUBU)</item>
+        <item>żagański(LUBU)</item>
+        <item>żarski(LUBU)</item>
+        <item>wschowski(LUBU)</item>
+
+
+
+        <item>bełchatowski(ŁÓDZ)</item>
+        <item>brzeziński(ŁÓDZ)</item>
+        <item>kutnowski(ŁÓDZ)</item>
+        <item>łaski(ŁÓDZ)</item>
+        <item>łęczycki(ŁÓDZ)</item>
+        <item>łowicki(ŁÓDZ)</item>
+        <item>Łódź-Miasto(ŁÓDZ)</item>
+        <item>łódzki wschodni(ŁÓDZ)</item>
+        <item>opoczyński(ŁÓDZ)</item>
+        <item>pabianicki(ŁÓDZ)</item>
+        <item>pajęczański(ŁÓDZ)</item>
+        <item>Piotrków Trybunalski-Miasto(ŁÓDZ)</item>
+        <item>piotrkowski(ŁÓDZ)</item>
+        <item>poddębicki(ŁÓDZ)</item>
+        <item>radomszczański(ŁÓDZ)</item>
+        <item>rawski(ŁÓDZ)</item>
+        <item>sieradzki(ŁÓDZ)</item>
+        <item>Skierniewice-Miasto(ŁÓDZ)</item>
+        <item>skierniewicki(ŁÓDZ)</item>
+        <item>tomaszowski(ŁÓDZ)</item>
+        <item>wieluński(ŁÓDZ)</item>
+        <item>wieruszowski(ŁÓDZ)</item>
+        <item>zduńskowolski(ŁÓDZ)</item>
+        <item>zgierski(ŁÓDZ)</item>
+
+
+
+        <item>bocheński(MAŁO)</item>
+        <item>brzeski(MAŁO)</item>
+        <item>chrzanowski(MAŁO)</item>
+        <item>dąbrowski(MAŁO)</item>
+        <item>gorlicki(MAŁO)</item>
+        <item>krakowski(MAŁO)</item>
+        <item>Kraków-Miasto(MAŁO)</item>
+        <item>limanowski(MAŁO)</item>
+        <item>miechowski(MAŁO)</item>
+        <item>myślenicki(MAŁO)</item>
+        <item>nowosądecki(MAŁO)</item>
+        <item>Nowy Sącz-Miasto(MAŁO)</item>
+        <item>nowotarski(MAŁO)</item>
+        <item>olkuski(MAŁO)</item>
+        <item>oświęcimski(MAŁO)</item>
+        <item>proszowicki(MAŁO)</item>
+        <item>suski(MAŁO)</item>
+        <item>tarnowski(MAŁO)</item>
+        <item>Tarnów-Miasto(MAŁO)</item>
+        <item>tatrzański(MAŁO)</item>
+        <item>wadowicki(MAŁO)</item>
+        <item>wielicki(MAŁO)</item>
+
+
+
+        <item>białobrzeski(MAZO)</item>
+        <item>ciechanowski(MAZO)</item>
+        <item>garwoliński(MAZO)</item>
+        <item>gostyniński(MAZO)</item>
+        <item>grodziski(MAZO)</item>
+        <item>grójecki(MAZO)</item>
+        <item>kozienicki(MAZO)</item>
+        <item>legionowski(MAZO)</item>
+        <item>lipski(MAZO)</item>
+        <item>łosicki(MAZO)</item>
+        <item>makowski(MAZO)</item>
+        <item>miński(MAZO)</item>
+        <item>mławski(MAZO)</item>
+        <item>nowodworski(MAZO)</item>
+        <item>ostrołęcki(MAZO)</item>
+        <item>Ostrołęka-Miasto(MAZO)</item>
+        <item>ostrowski(MAZO)</item>
+        <item>otwocki(MAZO)</item>
+        <item>piaseczyński(MAZO)</item>
+        <item>płocki(MAZO)</item>
+        <item>Płock-Miasto(MAZO)</item>
+        <item>płoński(MAZO)</item>
+        <item>pruszkowski(MAZO)</item>
+        <item>przasnyski(MAZO)</item>
+        <item>przysuski(MAZO)</item>
+        <item>pułtuski(MAZO)</item>
+        <item>radomski(MAZO)</item>
+        <item>Radom-Miasto(MAZO)</item>
+        <item>siedlecki(MAZO)</item>
+        <item>Siedlce-Miasto(MAZO)</item>
+        <item>sierpecki(MAZO)</item>
+        <item>sochaczewski(MAZO)</item>
+        <item>sokołowski(MAZO)</item>
+        <item>szydłowiecki(MAZO)</item>
+        <item>warszawski zachodni(MAZO)</item>
+        <item>Warszawa-Miasto(MAZO)</item>
+        <item>węgrowski(MAZO)</item>
+        <item>wołomiński(MAZO)</item>
+        <item>wyszkowski(MAZO)</item>
+        <item>zwoleński(MAZO)</item>
+        <item>żuromiński(MAZO)</item>
+        <item>żyrardowski(MAZO)</item>
+
+
+
+        <item>brzeski(OPOL)</item>
+        <item>głubczycki(OPOL)</item>
+        <item>kędzierzyńsko-kozielski(OPOL)</item>
+        <item>kluczborski(OPOL)</item>
+        <item>krapkowicki(OPOL)</item>
+        <item>namysłowski(OPOL)</item>
+        <item>nyski(OPOL)</item>
+        <item>oleski(OPOL)</item>
+        <item>opolski(OPOL)</item>
+        <item>Opole(OPOL)-Miasto</item>
+        <item>prudnicki(OPOL)</item>
+        <item>strzelecki(OPOL)</item>
+
+
+
+        <item>bieszczadzki(PODK)</item>
+        <item>brzozowski(PODK)</item>
+        <item>dębicki(PODK)</item>
+        <item>jarosławski(PODK)</item>
+        <item>jasielski(PODK)</item>
+        <item>kolbuszowski(PODK)</item>
+        <item>krośnieński(PODK)</item>
+        <item>Krosno(PODK)-Miasto</item>
+        <item>leżajski(PODK)</item>
+        <item>lubaczowski(PODK)</item>
+        <item>łańcucki(PODK)</item>
+        <item>mielecki(PODK)</item>
+        <item>niżański(PODK)</item>
+        <item>przemyski(PODK)</item>
+        <item>Przemyśl-Miasto(PODK)</item>
+        <item>przeworski(PODK)</item>
+        <item>ropczycko-sędziszowski(PODK)</item>
+        <item>rzeszowski(PODK)</item>
+        <item>Rzeszów-Miasto(PODK)</item>
+        <item>sanocki(PODK)</item>
+        <item>stalowowolski(PODK)</item>
+        <item>strzyżowski(PODK)</item>
+        <item>tarnobrzeski(PODK)</item>
+        <item>Tarnobrzeg-Miasto(PODK)</item>
+        <item>leski(PODK)</item>
+
+
+
+        <item>augustowski(PODL)</item>
+        <item>białostocki(PODL)</item>
+        <item>Białystok-Miasto(PODL)</item>
+        <item>bielski(PODL)</item>
+        <item>grajewski(PODL)</item>
+        <item>hajnowski(PODL)</item>
+        <item>kolneński(PODL)</item>
+        <item>łomżyński(PODL)</item>
+        <item>Łomża-Miasto(PODL)</item>
+        <item>moniecki(PODL)</item>
+        <item>sejneński(PODL)</item>
+        <item>siemiatycki(PODL)</item>
+        <item>sokólski(PODL)</item>
+        <item>suwalski(PODL)</item>
+        <item>Suwałki-Miasto(PODL)</item>
+        <item>wysokomazowiecki(PODL)</item>
+        <item>zambrowski(PODL)</item>
+
+
+
+        <item>bytowski(POMO)</item>
+        <item>chojnicki(POMO)</item>
+        <item>człuchowski(POMO)</item>
+        <item>gdański(POMO)</item>
+        <item>Gdańsk-Miasto(POMO)</item>
+        <item>Gdynia-Miasto(POMO)</item>
+        <item>kartuski(POMO)</item>
+        <item>kościerski(POMO)</item>
+        <item>kwidzyński(POMO)</item>
+        <item>lęborski(POMO)</item>
+        <item>malborski(POMO)</item>
+        <item>nowodworski(POMO)</item>
+        <item>pucki(POMO)</item>
+        <item>słupski(POMO)</item>
+        <item>Słupsk-Miasto(POMO)</item>
+        <item>Sopot-Miasto(POMO)</item>
+        <item>starogardzki(POMO)</item>
+        <item>tczewski(POMO)</item>
+        <item>wejherowski(POMO)</item>
+        <item>sztumski(POMO)</item>
+
+
+
+        <item>będziński(ŚLĄS)</item>
+        <item>bielski(ŚLĄS)</item>
+        <item>Bielsko-Biała-Miasto(ŚLĄS)</item>
+        <item>bieruńsko-lędziński(ŚLĄS)</item>
+        <item>Bytom-Miasto(ŚLĄS)</item>
+        <item>Chorzów-Miasto(ŚLĄS)</item>
+        <item>cieszyński(ŚLĄS)</item>
+        <item>częstochowski(ŚLĄS)</item>
+        <item>Częstochowa-Miasto(ŚLĄS)</item>
+        <item>Dąbrowa Górnicza-Miasto(ŚLĄS)</item>
+        <item>gliwicki(ŚLĄS)</item>
+        <item>Gliwice-Miasto(ŚLĄS)</item>
+        <item>Jastrzębie-Zdrój-Miasto(ŚLĄS)</item>
+        <item>Jaworzno-Miasto(ŚLĄS)</item>
+        <item>Katowice-Miasto(ŚLĄS)</item>
+        <item>kłobucki(ŚLĄS)</item>
+        <item>lubliniecki(ŚLĄS)</item>
+        <item>mikołowski(ŚLĄS)</item>
+        <item>Mysłowice-Miasto(ŚLĄS)</item>
+        <item>myszkowski(ŚLĄS)</item>
+        <item>Piekary Śląskie-Miasto(ŚLĄS)</item>
+        <item>pszczyński(ŚLĄS)</item>
+        <item>raciborski(ŚLĄS)</item>
+        <item>Ruda Śląska-Miasto(ŚLĄS)</item>
+        <item>rybnicki(ŚLĄS)</item>
+        <item>Rybnik-Miasto(ŚLĄS)</item>
+        <item>Siemianowice Śląskie-Miasto(ŚLĄS)</item>
+        <item>Sosnowiec-Miasto(ŚLĄS)</item>
+        <item>Świętochłowice-Miasto(ŚLĄS)</item>
+        <item>tarnogórski(ŚLĄS)</item>
+        <item>Tychy-Miasto(ŚLĄS)</item>
+        <item>wodzisławski(ŚLĄS)</item>
+        <item>Zabrze-Miasto(ŚLĄS)</item>
+        <item>zawierciański(ŚLĄS)</item>
+        <item>Żory-Miasto(ŚLĄS)</item>
+        <item>żywiecki(ŚLĄS)</item>
+
+
+
+        <item>buski(ŚWIĘ)</item>
+        <item>jędrzejowski(ŚWIĘ)</item>
+        <item>kazimierski(ŚWIĘ)</item>
+        <item>kielecki(ŚWIĘ)</item>
+        <item>Kielce-Miasto(ŚWIĘ)</item>
+        <item>konecki(ŚWIĘ)</item>
+        <item>opatowski(ŚWIĘ)</item>
+        <item>ostrowiecki(ŚWIĘ)</item>
+        <item>pińczowski(ŚWIĘ)</item>
+        <item>sandomierski(ŚWIĘ)</item>
+        <item>skarżyski(ŚWIĘ)</item>
+        <item>starachowicki(ŚWIĘ)</item>
+        <item>staszowski(ŚWIĘ)</item>
+        <item>włoszczowski(ŚWIĘ)</item>
+
+
+
+        <item>bartoszycki(WARM)</item>
+        <item>braniewski(WARM)</item>
+        <item>działdowski(WARM)</item>
+        <item>elbląski(WARM)</item>
+        <item>Elbląg-Miasto(WARM)</item>
+        <item>ełcki(WARM)</item>
+        <item>giżycki(WARM)</item>
+        <item>iławski(WARM)</item>
+        <item>kętrzyński(WARM)</item>
+        <item>lidzbarski(WARM)</item>
+        <item>mrągowski(WARM)</item>
+        <item>nidzicki(WARM)</item>
+        <item>nowomiejski(WARM)</item>
+        <item>olecki(WARM)</item>
+        <item>olsztyński(WARM)</item>
+        <item>Olsztyn-Miasto(WARM)</item>
+        <item>ostródzki(WARM)</item>
+        <item>piski(WARM)</item>
+        <item>szczycieński(WARM)</item>
+        <item>gołdapski(WARM)</item>
+        <item>węgorzewski(WARM)</item>
+
+
+
+        <item>chodzieski(WIEL)</item>
+        <item>czarnkowsko-trzcianecki(WIEL)</item>
+        <item>gnieźnieński(WIEL)</item>
+        <item>gostyński(WIEL)</item>
+        <item>grodziski(WIEL)</item>
+        <item>jarociński(WIEL)</item>
+        <item>kaliski(WIEL)</item>
+        <item>Kalisz-Miasto(WIEL)</item>
+        <item>kępiński(WIEL)</item>
+        <item>kolski(WIEL)</item>
+        <item>koniński(WIEL)</item>
+        <item>Konin-Miasto(WIEL)</item>
+        <item>kościański(WIEL)</item>
+        <item>krotoszyński(WIEL)</item>
+        <item>leszczyński(WIEL)</item>
+        <item>Leszno-Miasto(WIEL)</item>
+        <item>międzychodzki(WIEL)</item>
+        <item>nowotomyski(WIEL)</item>
+        <item>obornicki(WIEL)</item>
+        <item>ostrowski(WIEL)</item>
+        <item>ostrzeszowski(WIEL)</item>
+        <item>pilski(WIEL)</item>
+        <item>pleszewski(WIEL)</item>
+        <item>poznański(WIEL)</item>
+        <item>Poznań-Miasto(WIEL)</item>
+        <item>rawicki(WIEL)</item>
+        <item>słupecki(WIEL)</item>
+        <item>szamotulski(WIEL)</item>
+        <item>średzki(WIEL)</item>
+        <item>śremski(WIEL)</item>
+        <item>turecki(WIEL)</item>
+        <item>wągrowiecki(WIEL)</item>
+        <item>wolsztyński(WIEL)</item>
+        <item>wrzesiński(WIEL)</item>
+        <item>złotowski(WIEL)</item>
+
+
+
+        <item>białogardzki(ZACH)</item>
+        <item>choszczeński(ZACH)</item>
+        <item>drawski(ZACH)</item>
+        <item>goleniowski(ZACH)</item>
+        <item>gryficki(ZACH)</item>
+        <item>gryfiński(ZACH)</item>
+        <item>kamieński(ZACH)</item>
+        <item>kołobrzeski(ZACH)</item>
+        <item>koszaliński(ZACH)</item>
+        <item>Koszalin-Miasto(ZACH)</item>
+        <item>łobeski(ZACH)</item>
+        <item>myśliborski(ZACH)</item>
+        <item>policki(ZACH)</item>
+        <item>pyrzycki(ZACH)</item>
+        <item>sławieński(ZACH)</item>
+        <item>stargardzki(ZACH)</item>
+        <item>szczecinecki(ZACH)</item>
+        <item>Szczecin-Miasto(ZACH)</item>
+        <item>świdwiński(ZACH)</item>
+        <item>Świnoujście-Miasto(ZACH)</item>
+        <item>wałecki(ZACH)</item>
+
+    </string-array>
+
+      <string-array name="array_poviats_gus">
+        <item>-1</item>
+        <item>t0201</item>
+        <item>t0202</item>
+        <item>t0203</item>
+        <item>t0204</item>
+        <item>t0205</item>
+        <item>t0261</item>
+        <item>t0206</item>
+        <item>t0207</item>
+        <item>t0208</item>
+        <item>t0262</item>
+        <item>t0209</item>
+        <item>t0210</item>
+        <item>t0211</item>
+        <item>t0212</item>
+        <item>t0213</item>
+        <item>t0214</item>
+        <item>t0215</item>
+        <item>t0216</item>
+        <item>t0217</item>
+        <item>t0218</item>
+        <item>t0219</item>
+        <item>t0220</item>
+        <item>t0265</item>
+        <item>t0221</item>
+        <item>t0222</item>
+        <item>t0264</item>
+        <item>t0223</item>
+        <item>t0224</item>
+        <item>t0225</item>
+        <item>t0226</item>
+
+
+
+        <item>t0401</item>
+        <item>t0402</item>
+        <item>t0403</item>
+        <item>t0461</item>
+        <item>t0404</item>
+        <item>t0405</item>
+        <item>t0406</item>
+        <item>t0462</item>
+        <item>t0407</item>
+        <item>t0408</item>
+        <item>t0409</item>
+        <item>t0410</item>
+        <item>t0411</item>
+        <item>t0412</item>
+        <item>t0413</item>
+        <item>t0414</item>
+        <item>t0415</item>
+        <item>t0463</item>
+        <item>t0416</item>
+        <item>t0417</item>
+        <item>t0418</item>
+        <item>t0464</item>
+        <item>t0419</item>
+
+
+
+        <item>t0601</item>
+        <item>t0661</item>
+        <item>t0602</item>
+        <item>t0603</item>
+        <item>t0662</item>
+        <item>t0604</item>
+        <item>t0605</item>
+        <item>t0606</item>
+        <item>t0607</item>
+        <item>t0608</item>
+        <item>t0609</item>
+        <item>t0663</item>
+        <item>t0610</item>
+        <item>t0611</item>
+        <item>t0612</item>
+        <item>t0613</item>
+        <item>t0614</item>
+        <item>t0615</item>
+        <item>t0616</item>
+        <item>t0617</item>
+        <item>t0618</item>
+        <item>t0619</item>
+        <item>t0620</item>
+        <item>t0664</item>
+
+
+
+        <item>t0801</item>
+        <item>t0861</item>
+        <item>t0802</item>
+        <item>t0803</item>
+        <item>t0804</item>
+        <item>t0805</item>
+        <item>t0806</item>
+        <item>t0807</item>
+        <item>t0808</item>
+        <item>t0809</item>
+        <item>t0862</item>
+        <item>t0810</item>
+        <item>t0811</item>
+        <item>t0812</item>
+
+
+
+        <item>t1001</item>
+        <item>t1021</item>
+        <item>t1002</item>
+        <item>t1003</item>
+        <item>t1004</item>
+        <item>t1005</item>
+        <item>t1061</item>
+        <item>t1006</item>
+        <item>t1007</item>
+        <item>t1008</item>
+        <item>t1009</item>
+        <item>t1062</item>
+        <item>t1010</item>
+        <item>t1011</item>
+        <item>t1012</item>
+        <item>t1013</item>
+        <item>t1014</item>
+        <item>t1063</item>
+        <item>t1015</item>
+        <item>t1016</item>
+        <item>t1017</item>
+        <item>t1018</item>
+        <item>t1019</item>
+        <item>t1020</item>
+
+
+
+        <item>t1201</item>
+        <item>t1202</item>
+        <item>t1203</item>
+        <item>t1204</item>
+        <item>t1205</item>
+        <item>t1206</item>
+        <item>t1261</item>
+        <item>t1207</item>
+        <item>t1208</item>
+        <item>t1209</item>
+        <item>t1210</item>
+        <item>t1262</item>
+        <item>t1211</item>
+        <item>t1212</item>
+        <item>t1213</item>
+        <item>t1214</item>
+        <item>t1215</item>
+        <item>t1216</item>
+        <item>t1263</item>
+        <item>t1217</item>
+        <item>t1218</item>
+        <item>t1219</item>
+
+
+
+        <item>t1401</item>
+        <item>t1402</item>
+        <item>t1403</item>
+        <item>t1404</item>
+        <item>t1405</item>
+        <item>t1406</item>
+        <item>t1407</item>
+        <item>t1408</item>
+        <item>t1409</item>
+        <item>t1410</item>
+        <item>t1411</item>
+        <item>t1412</item>
+        <item>t1413</item>
+        <item>t1414</item>
+        <item>t1415</item>
+        <item>t1461</item>
+        <item>t1416</item>
+        <item>t1417</item>
+        <item>t1418</item>
+        <item>t1419</item>
+        <item>t1462</item>
+        <item>t1420</item>
+        <item>t1421</item>
+        <item>t1422</item>
+        <item>t1423</item>
+        <item>t1424</item>
+        <item>t1425</item>
+        <item>t1463</item>
+        <item>t1426</item>
+        <item>t1464</item>
+        <item>t1427</item>
+        <item>t1428</item>
+        <item>t1429</item>
+        <item>t1430</item>
+        <item>t1432</item>
+        <item>t1465</item>
+        <item>t1433</item>
+        <item>t1434</item>
+        <item>t1435</item>
+        <item>t1436</item>
+        <item>t1437</item>
+        <item>t1438</item>
+
+
+
+        <item>t1601</item>
+        <item>t1602</item>
+        <item>t1603</item>
+        <item>t1604</item>
+        <item>t1605</item>
+        <item>t1606</item>
+        <item>t1607</item>
+        <item>t1608</item>
+        <item>t1609</item>
+        <item>t1661</item>
+        <item>t1610</item>
+        <item>t1611</item>
+
+
+
+        <item>t1801</item>
+        <item>t1802</item>
+        <item>t1803</item>
+        <item>t1804</item>
+        <item>t1805</item>
+        <item>t1806</item>
+        <item>t1807</item>
+        <item>t1861</item>
+        <item>t1808</item>
+        <item>t1809</item>
+        <item>t1810</item>
+        <item>t1811</item>
+        <item>t1812</item>
+        <item>t1813</item>
+        <item>t1862</item>
+        <item>t1814</item>
+        <item>t1815</item>
+        <item>t1816</item>
+        <item>t1863</item>
+        <item>t1817</item>
+        <item>t1818</item>
+        <item>t1819</item>
+        <item>t1820</item>
+        <item>t1864</item>
+        <item>t1821</item>
+
+
+
+        <item>t2001</item>
+        <item>t2002</item>
+        <item>t2061</item>
+        <item>t2003</item>
+        <item>t2004</item>
+        <item>t2005</item>
+        <item>t2006</item>
+        <item>t2007</item>
+        <item>t2062</item>
+        <item>t2008</item>
+        <item>t2009</item>
+        <item>t2010</item>
+        <item>t2011</item>
+        <item>t2012</item>
+        <item>t2063</item>
+        <item>t2013</item>
+        <item>t2014</item>
+
+
+
+        <item>t2201</item>
+        <item>t2202</item>
+        <item>t2203</item>
+        <item>t2204</item>
+        <item>t2261</item>
+        <item>t2262</item>
+        <item>t2205</item>
+        <item>t2206</item>
+        <item>t2207</item>
+        <item>t2208</item>
+        <item>t2209</item>
+        <item>t2210</item>
+        <item>t2211</item>
+        <item>t2212</item>
+        <item>t2263</item>
+        <item>t2264</item>
+        <item>t2213</item>
+        <item>t2214</item>
+        <item>t2215</item>
+        <item>t2216</item>
+
+
+
+        <item>t2401</item>
+        <item>t2402</item>
+        <item>t2461</item>
+        <item>t2414</item>
+        <item>t2462</item>
+        <item>t2463</item>
+        <item>t2403</item>
+        <item>t2404</item>
+        <item>t2464</item>
+        <item>t2465</item>
+        <item>t2405</item>
+        <item>t2466</item>
+        <item>t2467</item>
+        <item>t2468</item>
+        <item>t2469</item>
+        <item>t2406</item>
+        <item>t2407</item>
+        <item>t2408</item>
+        <item>t2470</item>
+        <item>t2409</item>
+        <item>t2471</item>
+        <item>t2410</item>
+        <item>t2411</item>
+        <item>t2472</item>
+        <item>t2412</item>
+        <item>t2473</item>
+        <item>t2474</item>
+        <item>t2475</item>
+        <item>t2476</item>
+        <item>t2413</item>
+        <item>t2477</item>
+        <item>t2415</item>
+        <item>t2478</item>
+        <item>t2416</item>
+        <item>t2479</item>
+        <item>t2417</item>
+
+
+
+        <item>t2601</item>
+        <item>t2602</item>
+        <item>t2603</item>
+        <item>t2604</item>
+        <item>t2661</item>
+        <item>t2605</item>
+        <item>t2606</item>
+        <item>t2607</item>
+        <item>t2608</item>
+        <item>t2609</item>
+        <item>t2610</item>
+        <item>t2611</item>
+        <item>t2612</item>
+        <item>t2613</item>
+
+
+
+        <item>t2801</item>
+        <item>t2802</item>
+        <item>t2803</item>
+        <item>t2804</item>
+        <item>t2861</item>
+        <item>t2805</item>
+        <item>t2806</item>
+        <item>t2807</item>
+        <item>t2808</item>
+        <item>t2809</item>
+        <item>t2810</item>
+        <item>t2811</item>
+        <item>t2812</item>
+        <item>t2813</item>
+        <item>t2814</item>
+        <item>t2862</item>
+        <item>t2815</item>
+        <item>t2816</item>
+        <item>t2817</item>
+        <item>t2818</item>
+        <item>t2819</item>
+
+
+
+        <item>t3001</item>
+        <item>t3002</item>
+        <item>t3003</item>
+        <item>t3004</item>
+        <item>t3005</item>
+        <item>t3006</item>
+        <item>t3007</item>
+        <item>t3061</item>
+        <item>t3008</item>
+        <item>t3009</item>
+        <item>t3010</item>
+        <item>t3062</item>
+        <item>t3011</item>
+        <item>t3012</item>
+        <item>t3013</item>
+        <item>t3063</item>
+        <item>t3014</item>
+        <item>t3015</item>
+        <item>t3016</item>
+        <item>t3017</item>
+        <item>t3018</item>
+        <item>t3019</item>
+        <item>t3020</item>
+        <item>t3021</item>
+        <item>t3064</item>
+        <item>t3022</item>
+        <item>t3023</item>
+        <item>t3024</item>
+        <item>t3025</item>
+        <item>t3026</item>
+        <item>t3027</item>
+        <item>t3028</item>
+        <item>t3029</item>
+        <item>t3030</item>
+        <item>t3031</item>
+
+
+
+        <item>t3201</item>
+        <item>t3202</item>
+        <item>t3203</item>
+        <item>t3204</item>
+        <item>t3205</item>
+        <item>t3206</item>
+        <item>t3207</item>
+        <item>t3208</item>
+        <item>t3209</item>
+        <item>t3261</item>
+        <item>t3218</item>
+        <item>t3210</item>
+        <item>t3211</item>
+        <item>t3212</item>
+        <item>t3213</item>
+        <item>t3214</item>
+        <item>t3215</item>
+        <item>t3262</item>
+        <item>t3216</item>
+        <item>t3263</item>
+        <item>t3217</item>
+
+    </string-array>
+
+
+
+</resources>

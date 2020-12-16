@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.ViewFragment">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/viewtabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.google.android.material.tabs.TabLayout>
+
+        <WebView
+            android:id="@+id/obostrzenia"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:gravity="start|top"
+            app:customVisibility="@{vm.showDesc}"
+            app:layout_constraintBottom_toBottomOf="@+id/dailyGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/dailyGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            app:constraint_referenced_ids="Liczba,Liczba10tys,Liczba10tysIndicator,Liczba10tys7,smiertelne"
+            app:customVisibility="@{vm.showGroup}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
+
+        <!--android:text="@{String.valueOf(vm.areaGovplx.govpl.liczba)}"-->
+        <!--android:text="@string/pozytywne"-->
+        <TextView
+            android:id="@+id/Liczba"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            android:text="@{@string/pozytywne(String.valueOf(vm.areaGovplx.govpl.Liczba))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
+
+        <TextView
+            android:id="@+id/Liczba10tys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/pozytywne10tys(String.valueOf(vm.areaGovplx.govpl.Liczba10tys))}"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Liczba" />
+
+        <TextView
+            android:id="@+id/Liczba10tysIndicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            app:evalAvgIndicator10="@{vm.areaGovplx}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Liczba10tys"
+            app:layout_constraintTop_toBottomOf="@+id/Liczba" />
+
+        <TextView
+            android:id="@+id/Liczba10tys7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            android:text="@{@string/pozytywne10tys7(String.valueOf(vm.areaGovplx.govpl.Liczba10tysAvg7))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Liczba10tys" />
+        <TextView
+            android:id="@+id/smiertelne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            android:text="@{@string/smiertelne(String.valueOf(vm.areaGovplx.govpl.WszystkieSmiertelne))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Liczba10tys7" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+        <variable
+            name="vm"
+            type="pl.covid19.ui.view.ViewFragmentViewModel" />
+    </data>
+</layout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+    android:shortcutId="shortcutId1"
+    android:enabled="true"
+    android:icon="@drawable/sharp_add_circle_outline_24"
+    android:shortcutShortLabel="@string/add"
+    android:shortcutLongLabel="@string/add_long" >
+    <intent
+        android:action="android.intent.action.MAIN"
+        android:targetPackage="pl.covid19"
+        android:targetClass="pl.covid19.ui.add.AddActivity"
+        android:parentActivityName=".MainActivity" />
+    </shortcut>
+</shortcuts>

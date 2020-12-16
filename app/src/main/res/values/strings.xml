@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">CovidMonitor</string>
+    <string name="menu_main">Moje</string>
+    <string name="menu_prognose">Prognoza</string>
+    <string name="menu_about">…</string>
+    <string name="about_main">O</string>
+    <string name="add_decriptor">"Dodaj do obserwacji "</string>
+    <string name="submit">Zapisz</string>
+    <string name="ChipAllPoland">Cała Polska</string>
+    <string name="ChipVoiev">Województwo</string>
+    <string name="ChipPoviat">Powiat</string>
+    <string name="ChipGps">Z GPS</string>
+    <string name="undo">Przywróć</string>
+    <string name="Other">Inne</string>
+    <string name="prognose">Prognoza z:</string>
+    <string name="icm_edu_pl">icm.edu.pl</string>
+    <string name="mimuw_edu_pl">mimuw.edu.pl</string>
+    <string name="mocos_pl">mocos.pl</string>
+    <string name="viewDayly">Widok Dzienny</string>
+    <string name="viewsummary">Widok zbiorczy</string>
+    <string name="add">Dodaj</string>
+    <string name="add_long">Dodaj jakie dane prezentować</string>
+
+
+
+    <string name="about_0">
+    <![CDATA[
+    <p><b>Cele aplikacji wersja 0.5</b> </p>
+    <p>Celem Aplikacji CovidMonitor jest przestawienie danych statycznych z Polski  z lokalizacj najbliższych użytkownikowi (powiatów, wojewódźtw) w sposób prosty, przejrzysty i dostępny  offline</p>
+    <p>Dostarczenie codzienne między <b>10:20 - 10:35</b> wartości podanych na Gov.pl</p>
+    <p>Przedstawienie jako wspólny manownik (<b>pozytywne przypadki na 10 tys.</b>)</p>
+    <p>Przedstawienie w jednym miejscu najważniejszych prognoz</p>
+    <p><a href="https://covidmonitor.pl/index.html#quote"">Najnowsze zmiany: <br> `Synchronizacja` <br>`Wskaźnik trendu` <br> `Notyfikacje` </a></p>
+    ]]>
+</string>
+    <string name="about_1">
+    <![CDATA[
+    <p><b>Dane prezetnowane w aplikacji na podstawie źródeł</b></p>
+    <p><a href="https://www.gov.pl/web/koronawirus/wykaz-zarazen-koronawirusem-sars-cov-2">gov.pl</a></p>
+    <p><b>Prognozy na podstawie następująych źródeł:</b></p>
+    <p><a href="https://covid19.mimuw.edu.pl/index.html">mimuw.edu.pl</a></p>
+    <p><a href=" https://covid-19.icm.edu.pl/stwierapp/">icm.edu.pl</a></p>
+    <p><a href=" https://mocos.pl/pl/prognosis">mocos.pl</a></p>
+    ]]>
+</string>
+    <string name="about_2">
+    <![CDATA[
+    <p><<b>Autor </b> </p>
+    <a href="mailto:bok@covidmonitor.pl?subject=Z%20Covidmonitor">Andrzej Niczyporuk</a>
+    ]]>
+</string>
+    <string name="about_3">
+    <![CDATA[
+    <p><b>Do aplikacji wykorzystano:</b></p>
+    <p><a href="https://github.com/ibrahimsn98/SmoothBottomBar">SmoothBottomBar</a><br></p>
+    <p><a href="https://github.com/miteshpithadiya/SearchableSpinner">SearchableSpinnerLibrary</a><br></p>
+    <p><a href="https://github.com/xabaras/RecyclerViewSwipeDecorator">SwipeDecorator odświerzenie widoku</a><br></p>
+    <p><a href="https://square.github.io/retrofit/">Retrofit HTTP API</a><br></p>
+    <p><a href="https://Material.io">Material.io - Ikony</a><br></p>
+    <p><a href="https://github.com/dkchalotra/crashbottomsheet">dkchalotra-crashbottomsheet - Obsługa crashy</a></p>
+     ]]>
+</string>
+    <string name="about_4">
+    <![CDATA[
+    <h4><b>Aktualnie planowane  zmiany do zobaczenia na stronie</b></h4>
+    <p><a href="https://covidmonitor.pl/index.html#plan">Plany zmian w aplikacji</a></p>
+    ]]>
+    <!--<a href="sms:?&body=Pobierz%20Apliakcję%20https://covidmonitor.pl">Udostępnij SMS</a></BR>-->
+</string>
+    <string name="about_5">
+    <![CDATA[
+    <h3><b>Daj szansę znajomy poznać w Apliakcji informacje o Covid: </b></h3>
+    <p> Poinformuj znajomych, że aplikację można pobrać z</p>
+    <a href="mailto:?subject=Covidmonitor%20to%20ciekwa%20aplikacja&body=Zainstaluj%20ją%20z%20https://covidmonitor.pl">Udostępnij e-mail</a>
+    ]]>
+</string>
+    <string name="about_6">
+    <![CDATA[
+        <p><a href="https://covidmonitor.pl/PolitykaPrywatnosci.html">https://covidmonitor.pl</a></p>
+        ]]>
+</string>
+
+
+    <string name="mywatch">Obserwowane</string>
+    <string name="new_data">Nowe dane</string>
+    <string name="inserted_string">Nowe dane o COVID</string>
+    <string name="inserted_rows">dodano dane za %s </string>
+    <string name="reinserted_rows">zsynchronizowane dane za %s </string>
+    <string name="pozytywne">pozytywne  %s </string>
+    <string name="pozytywne10tys">pozy. na 10tys.  %s </string>
+    <string name="pozytywne10tys7">średnia pozy. na 10tys.  %s </string>
+    <string name="smiertelne">Śmiertelne   %s </string>
+    <string name="up">↑</string>
+    <string name="down">↓</string>
+    <string name="same">~</string>
+
+    <!--Top title of BottomSheet which defaults to app name-->
+    <string name="cbs_title">@string/app_name</string>
+    <!--Bottom description of BottomSheet-->
+    <string name="cbs_description"> Aplkacja  się zagubiał!\nProszę prześlij raport aby pomóc developerom ją naprawić</string>
+    <!--Label for the Positive Button-->
+    <string name="cbs_btn_positive">Raport</string>
+    <!--Label for the Negative Button-->
+    <string name="cbs_btn_negative">Cancel</string>
+    <!--Content description string for BottomSheet drawable image-->
+    <string name="cbs_drawable_description">Sad Panda</string>
+    <!--Developer Email to set in email app. DO NOT FORGET TO SET IT IF YOU USE DEFAULT EMAIL REPORT ACTION-->
+    <string name="cbs_report_email_to">bok@covidmonitor.pl</string>
+    <!--Subject for the email report-->
+    <string name="cbs_report_email_subject">Crash Report</string>
+    <!--Toast message string if no email app is installed on device-->
+    <string name="cbs_toast_no_email_app">No email app found on device.</string>
+    <string name="otherSynchronize">Synchronizacja danych</string>
+
+
+</resources>
