@@ -19,7 +19,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
-        versionName "0.5"
+        versionName "0.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -49,6 +49,7 @@ dependencies {
     def version_timber = "4.7.1"
     def version_moshi = "1.11.0"
     def version_play_services = "17.1.0"
+    def mpa_chart = '3.1.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle"
@@ -86,7 +87,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
-
+    // MPA Android Chart
+    implementation "com.github.PhilJay:MPAndroidChart:v$mpa_chart"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"

@@ -39,3 +39,10 @@ data class Fazy(
     val Opis: String
 )
 {}
+
+data class Series(
+    val x: Float,
+    val y: Float,
+    val Nazwa: String
+)
+{}

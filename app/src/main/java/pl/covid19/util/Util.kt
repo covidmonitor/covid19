@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
 import android.webkit.WebSettings
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,3 +89,6 @@ fun enableJava(webSettings: WebSettings, notcache: Boolean=true) {
     /*val appCacheDir = parentFragment?.context?.getDir("cache", Context.MODE_PRIVATE)?.getPath()
     webSettings.setAppCachePath(appCacheDir)*/
     }
+fun Context.color(resource: Int): Int {
+    return ContextCompat.getColor(this, resource)
+}

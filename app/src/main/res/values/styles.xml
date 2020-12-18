@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="switchStyle">
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="android:colorForeground">@color/colorItemGrey</item>
+    </style>
+
 </resources>

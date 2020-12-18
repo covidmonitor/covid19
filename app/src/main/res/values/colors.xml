@@ -21,6 +21,10 @@
     <color name="colorStrefaZolta">#D3AA1A</color>
     <color name="colorStrefaZielona">#38A93D</color>
 
+    <color name="barTextColor">#5E35B1</color>
+    <color name="barStatusColor">#D81B60</color>
+    <color name="barsubtitle">#FFD54F</color>
+
     <color name="icon_color_on_surface">#000000</color>
 
 </resources>

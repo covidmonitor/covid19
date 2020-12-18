@@ -25,7 +25,7 @@
 
     <string name="about_0">
     <![CDATA[
-    <p><b>Cele aplikacji wersja 0.5</b> </p>
+    <p><b>Cele aplikacji wersja 0.6</b> </p>
     <p>Celem Aplikacji CovidMonitor jest przestawienie danych statycznych z Polski  z lokalizacj najbliższych użytkownikowi (powiatów, wojewódźtw) w sposób prosty, przejrzysty i dostępny  offline</p>
     <p>Dostarczenie codzienne między <b>10:20 - 10:35</b> wartości podanych na Gov.pl</p>
     <p>Przedstawienie jako wspólny manownik (<b>pozytywne przypadki na 10 tys.</b>)</p>
@@ -58,6 +58,7 @@
     <p><a href="https://square.github.io/retrofit/">Retrofit HTTP API</a><br></p>
     <p><a href="https://Material.io">Material.io - Ikony</a><br></p>
     <p><a href="https://github.com/dkchalotra/crashbottomsheet">dkchalotra-crashbottomsheet - Obsługa crashy</a></p>
+    <p><a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart - Wykresy</a></p>
      ]]>
 </string>
     <string name="about_4">
