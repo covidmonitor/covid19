@@ -1,13 +1,17 @@
 package pl.covid19
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
 import android.os.Build
+import android.provider.Settings.Secure
 import androidx.work.*
 import com.cod3rboy.crashbottomsheet.CrashBottomSheet
 import kotlinx.coroutines.CoroutineScope
@@ -25,12 +29,30 @@ import kotlin.properties.Delegates
 class CovidMonitorApplication : Application() {
     object Variables {
         var isNetworkConnected: Boolean by Delegates.observable(false) { property, oldValue, newValue ->
-            Timber.i("Network connectivity" +"$newValue")
+            Timber.i("Network connectivity" + "$newValue")
         }
+        var DevIDShort = ""
+        //var DevIDShort = Secure.getString(getContentResolver(), Secure.ANDROID_ID)
+        //val DevIDShort = "35" + //we make this look like a valid IMEI
+        //        Build.BOARD.length % 10 + Build.BRAND.length % 10 + Build.CPU_ABI.length % 10 + Build.DEVICE.length % 10 + Build.DISPLAY.length % 10 + Build.HOST.length % 10 + Build.ID.length % 10 + Build.MANUFACTURER.length % 10 + Build.MODEL.length % 10 + Build.PRODUCT.length % 10 + Build.TAGS.length % 10 + Build.TYPE.length % 10 + Build.USER.length % 10 //13 digits
+
+
     }
+
+
     val applicationScope = CoroutineScope(Dispatchers.Default)
 
+    @SuppressLint("HardwareIds")
     private fun delayedInit() {
+        var  version=""
+        try {
+            val pInfo: PackageInfo =
+                this.applicationContext.getPackageManager().getPackageInfo(this.applicationContext.getPackageName(), 0)
+            version = pInfo.versionName
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+        Variables.DevIDShort =Secure.getString(this.applicationContext.contentResolver,Secure.ANDROID_ID)+version
         applicationScope.launch {
             setupRecurringWork()
         }
@@ -54,7 +76,8 @@ class CovidMonitorApplication : Application() {
         WorkManager.getInstance().enqueueUniquePeriodicWork(
             RefreshDataWorker.WORK_NAME,
             ExistingPeriodicWorkPolicy.REPLACE,
-            repeatingRequest)
+            repeatingRequest
+        )
     }
 
     /**
@@ -77,13 +100,17 @@ class CovidMonitorApplication : Application() {
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channelPeriodic = NotificationChannel(CHANNEL_ID_PERIOD_WORK,
+            val channelPeriodic = NotificationChannel(
+                CHANNEL_ID_PERIOD_WORK,
                 "Period Work Request",
-                importance)
+                importance
+            )
             channelPeriodic.description = "Periodic Work"
-            val channelInstant = NotificationChannel(CHANNEL_ID_ONE_TIME_WORK,
+            val channelInstant = NotificationChannel(
+                CHANNEL_ID_ONE_TIME_WORK,
                 "One Time Work Request",
-                importance)
+                importance
+            )
             channelInstant.description  = "One Time Work"
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this

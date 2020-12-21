@@ -20,21 +20,21 @@ import java.util.concurrent.TimeUnit
 interface govplxService {
 
     @GET("getPLGOVPLX.php")
-    suspend fun getbyDate(@Query("date") type: String): List<Networkgovplx>
+    suspend fun getbyDate(@Query("date") type: String, @Query("uid") uid: String=""): List<Networkgovplx>
 
     @GET("getPLGOVPLX.php")
-    suspend fun getbyId(@Query("id") type: String): List<Networkgovplx>
+    suspend fun getbyId(@Query("id") type: String, @Query("uid") uid: String=""): List<Networkgovplx>
 
 
     @GET("getPLGOVPLX.php")
-    suspend fun getAll(): List<Networkgovplx>
+    suspend fun getAll(@Query("uid") uid: String=""): List<Networkgovplx>
 
 }
 
 
 interface fazyService {
     @GET("getPLFazy.php")
-    suspend fun getAll(): List<NetworkFazy>
+    suspend fun getAll(@Query("uid") userid: String=""): List<NetworkFazy>
 }
 
 //TODO get from localization name of powiat
