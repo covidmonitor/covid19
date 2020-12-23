@@ -14,25 +14,90 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </com.google.android.material.tabs.TabLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.helper.widget.Layer
+            android:id="@+id/obosLayer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="reloadObostrzenia,oboSwitchNext,oboNow,oboSwitchNow,oboNext"
+            app:customVisibility="@{vm.showDesc}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/oboSwitchNow"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/textView"
+            android:checked="@{vm.oboSwNow}"
+            android:onClick="@{()->vm.oboSwitchNow()}"
+            android:textSize="@dimen/textView"
+            android:theme="@style/switchStyle"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewtabLayout"
+            app:theme="@style/switchStyle" />
+
+        <TextView
+            android:id="@+id/oboNow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->vm.oboSwitchNow()}"
+            android:text="@string/oboNow"
+            android:textColor="@android:color/background_light"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="@dimen/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/oboSwitchNow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/oboSwitchNow"
+            app:layout_constraintTop_toTopOf="@+id/oboSwitchNow" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/oboSwitchNext"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/textView"
+            android:checked="@{vm.oboSwNext}"
+            android:onClick="@{()->vm.oboSwitchNext()}"
+            android:textSize="@dimen/textView"
+            android:theme="@style/switchStyle"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/oboSwitchNow"
+            app:theme="@style/switchStyle" />
+
+        <TextView
+            android:id="@+id/oboNext"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->vm.oboSwitchNext()}"
+            android:text="@string/oboNext"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/oboSwitchNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/oboSwitchNext"
+            app:layout_constraintTop_toTopOf="@+id/oboSwitchNext" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/reloadObostrzenia"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oboSwitchNext">
         <WebView
             android:id="@+id/obostrzenia"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="0dp"
-            android:gravity="start|top"
-            app:customVisibility="@{vm.showDesc}"
-            app:layout_constraintBottom_toBottomOf="@+id/dailyGroup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewtabLayout" >
-
+            android:layout_height="match_parent">
         </WebView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/dailyGroup"
+        <androidx.constraintlayout.helper.widget.Layer
+            android:id="@+id/graphLayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:constraint_referenced_ids="Liczba,switchLiczba,Liczba10tys,Liczba10tysIndicator,switchLiczba10tys,Liczba10tys7,switchLiczba10tys7,smiertelne,switchSmiertelne,graph"
@@ -63,6 +128,7 @@
             android:text="@{@string/pozytywne(String.valueOf(vm.areaGovplx.govpl.Liczba))}"
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/textView"
+            android:onClick="@{()->vm.switchLiczba()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba"
@@ -90,6 +156,7 @@
             android:text="@{@string/pozytywne10tys(String.valueOf(vm.areaGovplx.govpl.Liczba10tys))}"
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/textView"
+            android:onClick="@{()->vm.switchLiczba10tys()}"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba10tys"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba10tys"
@@ -101,6 +168,7 @@
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/textView"
             app:evalAvgIndicator10="@{vm.areaGovplx}"
+            android:onClick="@{()->vm.switchLiczba10tys()}"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba10tys"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +194,7 @@
             android:text="@{@string/pozytywne10tys7(String.valueOf(vm.areaGovplx.govpl.Liczba10tysAvg7))}"
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/textView"
+            android:onClick="@{()->vm.switchLiczba10tys7()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba10tys7"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys7"
@@ -151,6 +220,7 @@
             android:text="@{@string/smiertelne(String.valueOf(vm.areaGovplx.govpl.WszystkieSmiertelne))}"
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/textView"
+            android:onClick="@{()->vm.switchSmiertelne()}"
             app:layout_constraintTop_toTopOf="@+id/switchSmiertelne"
             app:layout_constraintBottom_toBottomOf="@+id/switchSmiertelne"
             app:layout_constraintEnd_toEndOf="parent"

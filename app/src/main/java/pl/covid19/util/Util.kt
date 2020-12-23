@@ -74,17 +74,24 @@ fun atPlRange():Boolean
     val d =java.sql.Time.valueOf(formatter.format(Calendar.getInstance().getTime()))
     return d.after(min) && d.before(max)
 }
-fun enableJava(webSettings: WebSettings, notcache: Boolean = true) {
-    webSettings.javaScriptEnabled = true
-    webSettings.setAppCacheEnabled(true)
-    if (notcache)
+fun enableJava(webSettings: WebSettings, cache: Boolean = true) {
+        webSettings.setAppCacheEnabled(true)
+    if (cache)
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK)
     else
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ONLY)
-    webSettings.domStorageEnabled = true
-    webSettings.setAllowFileAccess(true)
-    /*val appCacheDir = parentFragment?.context?.getDir("cache", Context.MODE_PRIVATE)?.getPath()
-    webSettings.setAppCachePath(appCacheDir)*/
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE)
+
+   webSettings.apply {
+        javaScriptEnabled = true
+        domStorageEnabled = true
+        allowContentAccess = true
+        useWideViewPort = false
+        allowContentAccess = true
+        allowFileAccess = true
+        javaScriptCanOpenWindowsAutomatically = true
+    }
+
+
     }
 
 

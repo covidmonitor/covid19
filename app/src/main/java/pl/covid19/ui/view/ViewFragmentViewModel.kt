@@ -20,6 +20,8 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
     val areaGovplx = databaseDao.getAreaGovplxFazaWithIdDate(areadate.first, areadate.second)
     val areaGovplxs = databaseDao.getAllAreaGovplxFazaWithId(areadate.first)
 
+    var fazaUrl = ""
+
     private var _swLiczba = MutableLiveData<Boolean>()
     val swLiczba: LiveData<Boolean>
         get() = _swLiczba
@@ -39,6 +41,16 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
     private var _showGroup = MutableLiveData<Boolean?>()
     val showGroup: LiveData<Boolean?>
         get() = _showGroup
+
+    private var _oboSwNow = MutableLiveData<Boolean>()
+    val oboSwNow: LiveData<Boolean>
+        get() = _oboSwNow
+
+    private var _oboSwNext = MutableLiveData<Boolean>()
+    val oboSwNext: LiveData<Boolean>
+        get() = _oboSwNext
+
+
 
     private var _showDesc = MutableLiveData<Boolean?>()
     val showDesc: LiveData<Boolean?>
@@ -77,6 +89,7 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
     init {
         setData()
         switchLiczba()
+        oboSwitchNow()
     }
 
     override fun onCleared() {
@@ -97,6 +110,18 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
         _swLiczba10tys7.value=false
         _swSmiertelne.value=false
     }
+
+    fun oboSwitchNext()
+    {
+        _oboSwNow.value=false
+        _oboSwNext.value=true
+      }
+    fun oboSwitchNow()
+    {
+        _oboSwNow.value=true
+        _oboSwNext.value=false
+    }
+
     fun switchLiczba10tys7() {
         _swLiczba.value=false
         _swLiczba10tys.value=false

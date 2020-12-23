@@ -64,12 +64,7 @@ class OtherViewFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewFragmentViewModel.networkStatus.observe(viewLifecycleOwner, Observer {
-        //TODO NOT Network
-        if (it && (args.OtherViewName == PRIVACY_NAME)) {
-            binding.webview.visibility = View.VISIBLE
-            binding.OtherTextMulti.visibility = View.INVISIBLE
-            binding.webview.webViewClient = WebViewClient()
-            enableJava(binding.webview.settings)
+        if (it) {
             binding.webview.loadUrl(PRIVACY_URL)
             }
         })

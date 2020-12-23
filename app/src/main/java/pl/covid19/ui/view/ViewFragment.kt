@@ -1,11 +1,15 @@
 package pl.covid19.ui.view
 
 
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.ColorSpace
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
@@ -13,17 +17,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.tabs.TabLayout
+import pl.covid19.CovidMonitorApplication
 import pl.covid19.R
 import pl.covid19.database.AreaDBGOVPLXDBFazyDB
 import pl.covid19.database.CovidDatabase
 import pl.covid19.databinding.FragmentViewBinding
 import pl.covid19.domain.Series
+import pl.covid19.util.Constants.BASEHOST_URL
 import pl.covid19.util.Constants.BASE_URL
 import pl.covid19.util.enableJava
 
@@ -46,15 +53,15 @@ class ViewFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(args.viewCovidDate))
-        binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText("Opis"))
+        binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(getString(R.string.nameOgraniczenia)))
 
         binding.viewtabLayout.tabGravity = TabLayout.GRAVITY_FILL
         binding.viewtabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                if (tab.position == 0) {
-                    viewFragmentViewModel.setData()
-                } else {
-                    viewFragmentViewModel.setDectription()
+                when(tab.position ) {
+                    0->viewFragmentViewModel.setData()
+                    1->viewFragmentViewModel.setDectription()
+                    else->viewFragmentViewModel.setData()
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -65,9 +72,7 @@ class ViewFragment : Fragment() {
             (activity as AppCompatActivity?)!!.supportActionBar!!.title = it?.area?.name
             it?.let {
                //Animator.animateIncrementNumber(binding.Liczba,it.govpl.Liczba)
-                binding.obostrzenia.webViewClient = WebViewClient()
-                enableJava(binding.obostrzenia.settings)
-                binding.obostrzenia.loadUrl(BASE_URL+it.fazy.idFazyKey.toString()+".html")
+                viewFragmentViewModel.fazaUrl =it.fazy.idFazyKey.toString()+".html"
                 //TODO 6 przenieść do  XML
                 if (it.fazy.Color != null) {
                     binding.smiertelne.setBackgroundColor(Color.parseColor(it.fazy.Color))
@@ -141,10 +146,42 @@ class ViewFragment : Fragment() {
         viewFragmentViewModel.listLiczba.observe(viewLifecycleOwner, Observer {
             it?.let{
                 setLineChart(Pair("Liczba pozytywnych",it),binding) }
-        }
-        )
+        })
+
+        binding.reloadObostrzenia.setOnRefreshListener(OnRefreshListener {
+            binding.obostrzenia.clearCache(true)
+            binding.obostrzenia.reload()
+            binding.reloadObostrzenia.setRefreshing(false)
+        })
+
+        viewFragmentViewModel.oboSwNow.observe(viewLifecycleOwner, Observer {
+            if (it) setObostrzenia(BASE_URL+"now.html",binding)
+        })
+
+        viewFragmentViewModel.oboSwNext.observe(viewLifecycleOwner, Observer {
+            if (it) setObostrzenia(BASE_URL+viewFragmentViewModel.fazaUrl,binding)
+        })
 
         return binding.root
+    }
+
+    private fun setObostrzenia(url: String, binding: FragmentViewBinding) {
+
+        binding.obostrzenia.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
+                if (Uri.parse(url).host == BASEHOST_URL) {
+                    return false
+                }
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intent)
+                return true
+            }
+        }
+        enableJava(binding.obostrzenia.settings)
+        if (CovidMonitorApplication.Variables.isNetworkConnected)
+            binding.obostrzenia.loadUrl(url)
+        else
+            binding.obostrzenia.loadData(getString(R.string.notInternet), "text/html", "utf-8")
     }
     private fun setLineChart(dailys: Pair<String,List<Series>>, binding: FragmentViewBinding) {
         val DataSet =LineDataSet(
@@ -156,7 +193,7 @@ class ViewFragment : Fragment() {
                 )
             }, dailys.first
         ).apply {
-            setLineChartStyle(this, R.color.colorItemRed)
+            setLineChartStyle(this, R.color.colorItemGrean)
         }
 
         val lineData = LineData(DataSet)
@@ -198,16 +235,15 @@ class ViewFragment : Fragment() {
                     return valueInt.toString()
                 }
             }
-
             data = lineData
         }
-
     }
 
     private fun setLineChartStyle(lineDataSet: LineDataSet, @ColorRes colorResId: Int) {
         with(lineDataSet) {
-            color = colorResId
+            color = R.color.colorAccent
             lineWidth = 2f
+            valueTextSize=10F
             circleRadius = 1f
             setDrawCircleHole(false)
             setCircleColor(colorResId)
@@ -215,8 +251,8 @@ class ViewFragment : Fragment() {
             valueTextColor = R.color.colorItemRed
             valueTextSize= 10F
             setDrawFilled(true)
-            fillColor = colorResId
-          //  fillAlpha = 60
+            fillColor = R.color.colorAccent
+           fillAlpha = 60
         }
     }
 
