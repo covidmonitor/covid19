@@ -8,6 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import pl.covid19.database.DatabaseDao
 import pl.covid19.domain.Series
+import pl.covid19.util.TodayToStringSql
+import kotlin.reflect.jvm.internal.impl.protobuf.LazyStringArrayList
 
 
 class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val areadate: Pair<Long, String>) : AndroidViewModel(
@@ -19,8 +21,10 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
 
     val areaGovplx = databaseDao.getAreaGovplxFazaWithIdDate(areadate.first, areadate.second)
     val areaGovplxs = databaseDao.getAllAreaGovplxFazaWithId(areadate.first)
+    var verObo = databaseDao.getVersionOgraniczeniaWithData(TodayToStringSql())
 
-    var fazaUrl = ""
+    var fazaUrl = "-99"
+    var links  = emptyArray<String>()
 
     private var _swLiczba = MutableLiveData<Boolean>()
     val swLiczba: LiveData<Boolean>
@@ -90,6 +94,7 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
         setData()
         switchLiczba()
         oboSwitchNow()
+      //  links = verObo.value?.decription?.split("|")?.toTypedArray() ?: emptyArray<String>() //TODO 1. set links
     }
 
     override fun onCleared() {

@@ -71,13 +71,13 @@
     <string name="smiertelne">Śmiertelne   %s </string>
 
     <string name="oboNow">Obowiązujące</string>
-    <string name="oboNext">Planowane i symulowane z śr. na 10tys</string>
+    <string name="oboNext">Planowane</string>
 
     <string name="up">↑</string>
     <string name="down">↓</string>
     <string name="same">~</string>
     <string name="otherSynchronize">Synchronizacja danych</string>
-    <string name="shareInfo">Sprawdź ograniczenia jakie są wprowadzone najbliżej Ciebie. Zainstaluj aplikację z https://covidmonitor.pl</string>
+    <string name="shareInfo">Polecam do sprawdenia danych i ograniczeń aplikację z https://covidmonitor.pl</string>
 
 
 
@@ -98,7 +98,8 @@
     <!--Toast message string if no email app is installed on device-->
     <string name="cbs_toast_no_email_app">No email app found on device.</string>
     <string name="nameOgraniczenia">Ograniczenia</string>
-
+    <string name="new_version">Jest nowsza wersja aplikacji</string>
+    <string name="OpenLink">Otwórz</string>
 
 
 </resources>

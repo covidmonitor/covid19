@@ -40,6 +40,12 @@ data class Fazy(
 )
 {}
 
+data class Version(
+        val typ: String,
+        val version: String,
+        val decription: String,
+        val dateod: String)
+{}
 data class Series(
     val x: Float,
     val y: Float,

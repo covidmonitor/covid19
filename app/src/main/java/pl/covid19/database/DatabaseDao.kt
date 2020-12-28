@@ -87,5 +87,19 @@ interface DatabaseDao {
     @Query("DELETE FROM fazy")
     fun clearFazy()
 
+    //VersionDB
+
+    @Query("DELETE FROM version")
+    fun clearVersion()
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertVersionAll(vararg pls: VersionDB)
+
+    @Query("SELECT * FROM version  WHERE typ='apk' AND dateod <= :dat ORDER BY dateod DESC LIMIT 1")
+    fun getVersionApkWithData(dat: String): LiveData<VersionDB?>
+
+    @Query("SELECT * FROM version  WHERE typ='ograniczenia' AND dateod <= :dat ORDER BY dateod DESC LIMIT 1")
+    fun getVersionOgraniczeniaWithData(dat: String): LiveData<VersionDB>
+
 }
 

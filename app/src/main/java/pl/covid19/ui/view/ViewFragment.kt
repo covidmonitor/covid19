@@ -3,7 +3,6 @@ package pl.covid19.ui.view
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.ColorSpace
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +14,8 @@ import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
@@ -26,44 +27,59 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.tabs.TabLayout
 import pl.covid19.CovidMonitorApplication
 import pl.covid19.R
-import pl.covid19.database.AreaDBGOVPLXDBFazyDB
 import pl.covid19.database.CovidDatabase
 import pl.covid19.databinding.FragmentViewBinding
 import pl.covid19.domain.Series
 import pl.covid19.util.Constants.BASEHOST_URL
-import pl.covid19.util.Constants.BASE_URL
+import pl.covid19.util.Constants.BASEAPI_URL
 import pl.covid19.util.enableJava
+import timber.log.Timber
+
 
 class ViewFragment : Fragment() {
 
     //private var binding: FragmentViewBinding.binding(R.layout.fragment_view)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
-        val binding = DataBindingUtil.inflate<FragmentViewBinding>(inflater,R.layout.fragment_view,container,false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding = DataBindingUtil.inflate<FragmentViewBinding>(inflater, R.layout.fragment_view,container,false)
         val args = ViewFragmentArgs.fromBundle(requireArguments())
 
         val app = requireNotNull(this.activity).application
 
         val dataSource = CovidDatabase.getInstance(app).covidDao
 
-        val viewModelFactory = ViewFragmentViewModelFactory(dataSource, app,Pair(args.viewCovidKey,args.viewCovidDate))
+        val viewModelFactory = ViewFragmentViewModelFactory(
+            dataSource, app, Pair(
+                args.viewCovidKey,
+                args.viewCovidDate
+            )
+        )
 
-        val viewFragmentViewModel =ViewModelProvider(this, viewModelFactory).get(ViewFragmentViewModel::class.java)
+        val viewFragmentViewModel =ViewModelProvider(this, viewModelFactory).get(
+            ViewFragmentViewModel::class.java
+        )
 
         binding.vm = viewFragmentViewModel
         binding.lifecycleOwner = this
 
         binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(args.viewCovidDate))
-        binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(getString(R.string.nameOgraniczenia)))
+        binding.viewtabLayout.addTab(
+            binding.viewtabLayout.newTab().setText(getString(R.string.nameOgraniczenia))
+        )
 
         binding.viewtabLayout.tabGravity = TabLayout.GRAVITY_FILL
         binding.viewtabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                when(tab.position ) {
-                    0->viewFragmentViewModel.setData()
-                    1->viewFragmentViewModel.setDectription()
-                    else->viewFragmentViewModel.setData()
+                when (tab.position) {
+                    0 -> viewFragmentViewModel.setData()
+                    1 -> viewFragmentViewModel.setDectription()
+                    else -> viewFragmentViewModel.setData()
                 }
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
@@ -71,8 +87,8 @@ class ViewFragment : Fragment() {
         viewFragmentViewModel.areaGovplx.observe(viewLifecycleOwner, Observer {
             (activity as AppCompatActivity?)!!.supportActionBar!!.title = it?.area?.name
             it?.let {
-               //Animator.animateIncrementNumber(binding.Liczba,it.govpl.Liczba)
-                viewFragmentViewModel.fazaUrl =it.fazy.idFazyKey.toString()+".html"
+                //Animator.animateIncrementNumber(binding.Liczba,it.govpl.Liczba)
+                viewFragmentViewModel.fazaUrl = it.fazy.idFazyKey.toString()
                 //TODO 6 przenieść do  XML
                 if (it.fazy.Color != null) {
                     binding.smiertelne.setBackgroundColor(Color.parseColor(it.fazy.Color))
@@ -90,62 +106,62 @@ class ViewFragment : Fragment() {
 
         viewFragmentViewModel.swLiczba10tys7.observe(viewLifecycleOwner, Observer {
             if (it) {
-                val tmpList =viewFragmentViewModel.listLiczba10tysAvg7.value
-                if (tmpList!=  null)
-                {
-                setLineChart(Pair("Średnia pozytywnych na 10tys za 7 dni",tmpList),binding)
+                val tmpList = viewFragmentViewModel.listLiczba10tysAvg7.value
+                if (tmpList != null) {
+                    setLineChart(Pair("Średnia pozytywnych na 10tys za 7 dni", tmpList), binding)
                 }
             }
         }
         )
         viewFragmentViewModel.listLiczba10tysAvg7.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                setLineChart(Pair("Średnia pozytywnych na 10tys za 7 dni",it),binding) }
+            it?.let {
+                setLineChart(Pair("Średnia pozytywnych na 10tys za 7 dni", it), binding)
             }
+        }
         )
         viewFragmentViewModel.swLiczba10tys.observe(viewLifecycleOwner, Observer {
             if (it) {
-                val tmpList =viewFragmentViewModel.listLiczba10tys.value
-                if (tmpList!=  null)
-                {
-                    setLineChart(Pair("Pozytywnych na 10tys",tmpList),binding)
+                val tmpList = viewFragmentViewModel.listLiczba10tys.value
+                if (tmpList != null) {
+                    setLineChart(Pair("Pozytywnych na 10tys", tmpList), binding)
                 }
             }
         }
         )
         viewFragmentViewModel.listLiczba10tys.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                setLineChart(Pair("Pozytywnych na 10tys",it),binding) }
+            it?.let {
+                setLineChart(Pair("Pozytywnych na 10tys", it), binding)
+            }
         }
         )
         viewFragmentViewModel.swSmiertelne.observe(viewLifecycleOwner, Observer {
             if (it) {
-                val tmpList =viewFragmentViewModel.listSmiertelne.value
-                if (tmpList!=  null)
-                {
-                    setLineChart(Pair("Liczba śmiertelnych",tmpList),binding)
+                val tmpList = viewFragmentViewModel.listSmiertelne.value
+                if (tmpList != null) {
+                    setLineChart(Pair("Liczba śmiertelnych", tmpList), binding)
                 }
             }
         }
         )
         viewFragmentViewModel.listSmiertelne.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                setLineChart(Pair("Liczba śmiertelnych",it),binding) }
+            it?.let {
+                setLineChart(Pair("Liczba śmiertelnych", it), binding)
+            }
         }
         )
         viewFragmentViewModel.swLiczba.observe(viewLifecycleOwner, Observer {
             if (it) {
-                val tmpList =viewFragmentViewModel.listLiczba.value
-                if (tmpList!=  null)
-                {
-                    setLineChart(Pair("Liczba pozytywnych",tmpList),binding)
+                val tmpList = viewFragmentViewModel.listLiczba.value
+                if (tmpList != null) {
+                    setLineChart(Pair("Liczba pozytywnych", tmpList), binding)
                 }
             }
         }
         )
         viewFragmentViewModel.listLiczba.observe(viewLifecycleOwner, Observer {
-            it?.let{
-                setLineChart(Pair("Liczba pozytywnych",it),binding) }
+            it?.let {
+                setLineChart(Pair("Liczba pozytywnych", it), binding)
+            }
         })
 
         binding.reloadObostrzenia.setOnRefreshListener(OnRefreshListener {
@@ -154,19 +170,29 @@ class ViewFragment : Fragment() {
             binding.reloadObostrzenia.setRefreshing(false)
         })
 
+        viewFragmentViewModel.verObo.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                viewFragmentViewModel.links = it.decription.split("|").toTypedArray()
+            }
+        })
+
         viewFragmentViewModel.oboSwNow.observe(viewLifecycleOwner, Observer {
-            if (it) setObostrzenia(BASE_URL+"now.html",binding)
+            if (it and (viewFragmentViewModel.links.size>=1))
+                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[0], binding,false)
+            else
+                setObostrzenia(BASEAPI_URL + "now.html", binding)
+                
         })
 
         viewFragmentViewModel.oboSwNext.observe(viewLifecycleOwner, Observer {
-            if (it) setObostrzenia(BASE_URL+viewFragmentViewModel.fazaUrl,binding)
+            if (it and (viewFragmentViewModel.links.size>=viewFragmentViewModel.fazaUrl.toInt()+1))
+                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[viewFragmentViewModel.fazaUrl.toInt() + 1],binding, false)
         })
 
         return binding.root
     }
 
-    private fun setObostrzenia(url: String, binding: FragmentViewBinding) {
-
+    private fun setObostrzenia(url: String, binding: FragmentViewBinding, cache: Boolean=true) {
         binding.obostrzenia.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
                 if (Uri.parse(url).host == BASEHOST_URL) {
@@ -177,13 +203,13 @@ class ViewFragment : Fragment() {
                 return true
             }
         }
-        enableJava(binding.obostrzenia.settings)
+        enableJava(binding.obostrzenia.settings,cache)
         if (CovidMonitorApplication.Variables.isNetworkConnected)
             binding.obostrzenia.loadUrl(url)
         else
             binding.obostrzenia.loadData(getString(R.string.notInternet), "text/html", "utf-8")
     }
-    private fun setLineChart(dailys: Pair<String,List<Series>>, binding: FragmentViewBinding) {
+    private fun setLineChart(dailys: Pair<String, List<Series>>, binding: FragmentViewBinding) {
         val DataSet =LineDataSet(
             dailys.second.mapIndexed { index, dailyItem ->
                 Entry(

@@ -31,28 +31,24 @@ class CovidMonitorApplication : Application() {
         var isNetworkConnected: Boolean by Delegates.observable(false) { property, oldValue, newValue ->
             Timber.i("Network connectivity" + "$newValue")
         }
-        var DevIDShort = ""
+        lateinit  var DevIDShort :String
         //var DevIDShort = Secure.getString(getContentResolver(), Secure.ANDROID_ID)
         //val DevIDShort = "35" + //we make this look like a valid IMEI
         //        Build.BOARD.length % 10 + Build.BRAND.length % 10 + Build.CPU_ABI.length % 10 + Build.DEVICE.length % 10 + Build.DISPLAY.length % 10 + Build.HOST.length % 10 + Build.ID.length % 10 + Build.MANUFACTURER.length % 10 + Build.MODEL.length % 10 + Build.PRODUCT.length % 10 + Build.TAGS.length % 10 + Build.TYPE.length % 10 + Build.USER.length % 10 //13 digits
-
-
+        lateinit var version :String
     }
-
-
     val applicationScope = CoroutineScope(Dispatchers.Default)
 
-    @SuppressLint("HardwareIds")
     private fun delayedInit() {
-        var  version=""
+
         try {
             val pInfo: PackageInfo =
                 this.applicationContext.getPackageManager().getPackageInfo(this.applicationContext.getPackageName(), 0)
-            version = pInfo.versionName
+            Variables.version = pInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
-        Variables.DevIDShort =Secure.getString(this.applicationContext.contentResolver,Secure.ANDROID_ID)+version
+        Variables.DevIDShort =Secure.getString(this.applicationContext.contentResolver,Secure.ANDROID_ID)+Variables.version
         applicationScope.launch {
             setupRecurringWork()
         }

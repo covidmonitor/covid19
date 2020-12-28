@@ -13,6 +13,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.android.synthetic.main.fragment_main.*
+import pl.covid19.CovidMonitorApplication
 import pl.covid19.MainActivity
 import pl.covid19.R
 import pl.covid19.database.AreaDB
@@ -108,6 +110,29 @@ class MainFragment : Fragment() {
                 }
             }
         })
+/*
+        new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new
+                        Intent(Intent.ACTION_VIEW,
+                                Uri.parse(getString(R.string.page_address)));
+                startActivity(browserIntent);
+            }
+        }*/
+
+        mainFragmentViewModel.verApk.observe(viewLifecycleOwner, Observer {
+            if (it!=null) {
+                val tmpUri = Uri.parse(it.decription)
+                if (it.version != CovidMonitorApplication.Variables.version)
+                    Snackbar.make(binding.root, getString(R.string.new_version), Snackbar.LENGTH_LONG)
+                            .setAction(getString(R.string.OpenLink), View.OnClickListener() {
+                                    val intents = Intent(Intent.ACTION_VIEW, tmpUri)
+                                    startActivity(intents)})
+                            .show()
+            }
+        })
+
         mainFragmentViewModel.maxDate.observe(viewLifecycleOwner, Observer {
             if (mainFragmentViewModel.maxDate.value == null) {
                 (activity as AppCompatActivity?)!!.supportActionBar!!.title =
