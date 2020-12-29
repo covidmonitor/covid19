@@ -36,6 +36,7 @@ class MainFragmentViewModel(val databaseDao: DatabaseDao,application: Applicatio
     var maxDate = databaseDao.getMaxDateDistinctLiveData()
     var areas = databaseDao.getAllAreas()
     var AGF = databaseDao.getAreaGovplxFazaWithMaxdate()
+    var verApk = databaseDao.getVersionApkWithData(TodayToStringSql())
 
     private val _showNeedLocation = MutableLiveData<Boolean>()
     val showNeedLocation: LiveData<Boolean>

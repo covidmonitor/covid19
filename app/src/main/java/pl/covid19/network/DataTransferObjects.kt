@@ -4,8 +4,10 @@ package  pl.covid19.network
 import com.squareup.moshi.JsonClass
 import pl.covid19.database.FazyDB
 import pl.covid19.database.GOVPLXDB
+import pl.covid19.database.VersionDB
 import pl.covid19.domain.Fazy
 import pl.covid19.domain.Govplx
+import pl.covid19.domain.Version
 
 
 @JsonClass(generateAdapter = true)
@@ -59,11 +61,32 @@ fun NetworkFazyContainer.asDomainModel(): List<Fazy> {
         Fazy(it.idFazyKey, it.DataOgloszenia,it.progLiczba10tys,it.Nazwa,it.img,it.Color,it.Opis)
     }
 }
-
 fun NetworkFazyContainer.asDatabaseModel(): Array<FazyDB>
 {
     return fazy.map {
         FazyDB(it.idFazyKey, it.DataOgloszenia, it.progLiczba10tys, it.Nazwa, it.img,it.Color,it.Opis)
     }.toTypedArray()
 }
+//Version
+@JsonClass(generateAdapter = true)
+data class NetworkVersion(
+        val typ: String="",
+        val version: String="",
+        val decription: String="",
+        val dateod: String="")
 
+@JsonClass(generateAdapter = true)
+data class NetworkVersionContainer(val version: List<NetworkVersion>)
+
+fun NetworkVersionContainer.asDomainModel(): List<Version> {
+    return version.map {
+        Version(it.typ,it.version,it.decription,it.dateod)
+    }
+}
+
+fun NetworkVersionContainer.asDatabaseModel(): Array<VersionDB>
+{
+    return version.map {
+        VersionDB( it.typ, it.version, it.decription, it.dateod)
+    }.toTypedArray()
+}

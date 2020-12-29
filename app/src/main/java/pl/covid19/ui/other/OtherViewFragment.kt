@@ -1,6 +1,7 @@
 package pl.covid19.ui.other
 
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -19,6 +20,7 @@ import kotlinx.coroutines.*
 import pl.covid19.R
 import pl.covid19.database.CovidDatabase
 import pl.covid19.databinding.FragmentOtherviewBinding
+import pl.covid19.util.Constants
 import pl.covid19.util.Constants.PRIVACY_NAME
 import pl.covid19.util.Constants.PRIVACY_URL
 import pl.covid19.util.enableJava
@@ -47,38 +49,22 @@ class OtherViewFragment : Fragment() {
         binding.OtherTextMulti.linksClickable= true
         binding.OtherTextMulti.movementMethod = LinkMovementMethod.getInstance()
 
+        binding.webview.visibility = View.INVISIBLE
+        binding.OtherTextMulti.visibility = View.VISIBLE
 
-/*        if  (args.OtherViewName == PRIVACY_NAME)
-        {
-            binding.webview.visibility = View.VISIBLE
-            binding.OtherTextMulti.visibility = View.INVISIBLE
-            binding.webview.webViewClient = WebViewClient()
-            enableJava(binding.webview.settings)
-            binding.webview.loadUrl(PRIVACY_URL)
-        }
+        @StringRes val resId = resources.getIdentifier("about_" + args.OtherViewKey.toString(),"string",context?.getPackageName())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            binding.OtherTextMulti.text =
+                Html.fromHtml(getString(resId), Html.FROM_HTML_MODE_LEGACY)
         else
-        {*/
-            binding.webview.visibility = View.INVISIBLE
-            binding.OtherTextMulti.visibility = View.VISIBLE
-
-            @StringRes val resId = resources.getIdentifier("about_" + args.OtherViewKey.toString(),"string",context?.getPackageName())
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                binding.OtherTextMulti.text =
-                    Html.fromHtml(getString(resId), Html.FROM_HTML_MODE_LEGACY)
-            else
-                binding.OtherTextMulti.text = Html.fromHtml(getString(resId))
-  //      }
+            binding.OtherTextMulti.text = Html.fromHtml(getString(resId))
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = args.OtherViewName
         binding.viewModel = viewFragmentViewModel
         binding.lifecycleOwner = this
 
         viewFragmentViewModel.networkStatus.observe(viewLifecycleOwner, Observer {
-        if (it && (args.OtherViewName == PRIVACY_NAME)) {
-            binding.webview.visibility = View.VISIBLE
-            binding.OtherTextMulti.visibility = View.INVISIBLE
-            binding.webview.webViewClient = WebViewClient()
-            enableJava(binding.webview.settings)
+        if (it) {
             binding.webview.loadUrl(PRIVACY_URL)
             }
         })

@@ -45,6 +45,9 @@ interface DatabaseDao {
     @Query("SELECT * from areas INTER JOIN govplx ON idGus = govplx.id JOIN fazy ON idFazy = fazy.idFazyKey  WHERE  areaAutoId = :key AND Date =:dat")
     fun getAreaGovplxFazaWithIdDate(key: Long, dat: String): LiveData<AreaDBGOVPLXDBFazyDB>
 
+    @Query("SELECT * from areas INTER JOIN govplx ON idGus = govplx.id JOIN fazy ON idFazy = fazy.idFazyKey  WHERE  areaAutoId = :key ORDER BY Date ASC")
+    fun getAllAreaGovplxFazaWithId(key: Long): LiveData<List<AreaDBGOVPLXDBFazyDB>>
+
     //GOVPLXDB
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertGovlxAll(vararg pls: GOVPLXDB): LongArray?
@@ -83,6 +86,20 @@ interface DatabaseDao {
 
     @Query("DELETE FROM fazy")
     fun clearFazy()
+
+    //VersionDB
+
+    @Query("DELETE FROM version")
+    fun clearVersion()
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertVersionAll(vararg pls: VersionDB)
+
+    @Query("SELECT * FROM version  WHERE typ='apk' AND dateod <= :dat ORDER BY dateod DESC LIMIT 1")
+    fun getVersionApkWithData(dat: String): LiveData<VersionDB?>
+
+    @Query("SELECT * FROM version  WHERE typ='ograniczenia' AND dateod <= :dat ORDER BY dateod DESC LIMIT 1")
+    fun getVersionOgraniczeniaWithData(dat: String): LiveData<VersionDB>
 
 }
 

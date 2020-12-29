@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.TaskStackBuilder
 import kotlinx.coroutines.*
+import pl.covid19.CovidMonitorApplication
 import pl.covid19.MainActivity
 import pl.covid19.R
 import pl.covid19.database.CovidDatabase
@@ -45,6 +46,7 @@ class CovidRepository(private val database: CovidDatabase, ctx: Context) {
         private set*/
 
     val context = ctx
+    val DevIDShort=CovidMonitorApplication.Variables.DevIDShort
     /**
      * Refresh the  stored in the offline cache.
      * This function uses the IO dispatcher to ensure the database insert database operation
@@ -59,46 +61,55 @@ class CovidRepository(private val database: CovidDatabase, ctx: Context) {
         Timber.i("Work refresh +" +all.toString())
         if (all)
             CoroutineScope(Dispatchers.IO).launch(handler) {
-                val pllist = Network.govplxList.getAll()
-                val plContainer = NetworkGovplxContainer(pllist)
-                database.covidDao.clearGovplx()
-                database.covidDao.insertGovlxAll(*plContainer.asDatabaseModel())
-
-                val fazy = Network.fazyList.getAll()
-                val fazyContainer = NetworkFazyContainer(fazy)
-                database.covidDao.insertFazyAll(*fazyContainer.asDatabaseModel())
-                database.covidDao.clearFazy()
+                getGovplx()
+                getFazyVersionDB()
                 showNotification(context.getString(R.string.reinserted_rows, "Od 24-11-2020 do " + TodayToStringSql(0)))
             }
-
         else
         CoroutineScope(Dispatchers.IO).launch(handler) {
-            if (database.covidDao.getCountGovplx()==0)  {
-                val pllist  = Network.govplxList.getAll()
-                val plContainer= NetworkGovplxContainer(pllist)
-                database.covidDao.insertGovlxAll(*plContainer.asDatabaseModel())
-            }
+            if (database.covidDao.getCountGovplx()==0)  getGovplx()
             else
             {
-                if (database.covidDao.getCountGovplxDay(TodayToStringSql(0))==0) {//TODO get all data from now to last in DB
-                        val pllist = Network.govplxList.getbyDate(TodayToStringSql(0))
-                        val plContainer = NetworkGovplxContainer(pllist)
-                        val tmpIns =database.covidDao.insertGovlxAll(*plContainer.asDatabaseModel())
-                        if (tmpIns != null) {
+                if (database.covidDao.getCountGovplxDay(TodayToStringSql(0))==0) {
+                    val tmpIns= getGovplxDate(TodayToStringSql(0))
+                    if (tmpIns != null) {
+                            getFazyVersionDB()
                           //   val tmp2=tmpIns.filterIndexed {_, i->tmpIns[i.toInt()] !=-1L }
                             if (tmpIns.size >0)
                                 showNotification(context.getString(R.string.inserted_rows,  TodayToStringSql(0)))
                             }
                 }
             }
-
+            //TODO chceck on refresh all why 2 times call
             if (database.covidDao.getCountFazy()==0) {
-                val fazy = Network.fazyList.getAll()
-                val fazyContainer = NetworkFazyContainer(fazy)
-                database.covidDao.insertFazyAll(*fazyContainer.asDatabaseModel())
+                getFazyVersionDB(false)
                 showNotification(context.getString(R.string.inserted_rows, "Od 24-11-2020 do " + TodayToStringSql(0)))
             }
         }
+    }
+
+    suspend private fun getGovplx(all:Boolean=true) {
+        val     pllist = Network.govplxList.getAll(DevIDShort)
+        val plContainer = NetworkGovplxContainer(pllist)
+        if (all) database.covidDao.clearGovplx()
+        database.covidDao.insertGovlxAll(*plContainer.asDatabaseModel())
+    }
+    suspend private fun getGovplxDate(date: String):LongArray? {
+        val pllist = Network.govplxList.getbyDate(date,DevIDShort)
+        val plContainer = NetworkGovplxContainer(pllist)
+        return database.covidDao.insertGovlxAll(*plContainer.asDatabaseModel())
+    }
+
+    suspend private fun getFazyVersionDB(all:Boolean=true) {
+        val fazy = Network.fazyList.getAll(DevIDShort)
+        val fazyContainer = NetworkFazyContainer(fazy)
+        if (all) database.covidDao.clearFazy()
+        database.covidDao.insertFazyAll(*fazyContainer.asDatabaseModel())
+
+        val version = Network.versionList.getAll(DevIDShort)
+        val versionContainer = NetworkVersionContainer(version)
+        if (all)  database.covidDao.clearVersion()
+        database.covidDao.insertVersionAll(*versionContainer.asDatabaseModel())
     }
 
     private fun showNotification(description: String) {

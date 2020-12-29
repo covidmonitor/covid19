@@ -39,3 +39,16 @@ data class Fazy(
     val Opis: String
 )
 {}
+
+data class Version(
+        val typ: String,
+        val version: String,
+        val decription: String,
+        val dateod: String)
+{}
+data class Series(
+    val x: Float,
+    val y: Float,
+    val Nazwa: String
+)
+{}
