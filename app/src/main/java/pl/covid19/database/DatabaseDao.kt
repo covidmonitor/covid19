@@ -45,6 +45,7 @@ interface DatabaseDao {
     @Query("SELECT * from areas INTER JOIN govplx ON idGus = govplx.id JOIN fazy ON idFazy = fazy.idFazyKey  WHERE  areaAutoId = :key AND Date =:dat")
     fun getAreaGovplxFazaWithIdDate(key: Long, dat: String): LiveData<AreaDBGOVPLXDBFazyDB>
 
+    @Transaction //added of elimante error cursor
     @Query("SELECT * from areas INTER JOIN govplx ON idGus = govplx.id JOIN fazy ON idFazy = fazy.idFazyKey  WHERE  areaAutoId = :key ORDER BY Date ASC")
     fun getAllAreaGovplxFazaWithId(key: Long): LiveData<List<AreaDBGOVPLXDBFazyDB>>
 

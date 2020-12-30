@@ -110,16 +110,6 @@ class MainFragment : Fragment() {
                 }
             }
         })
-/*
-        new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent browserIntent = new
-                        Intent(Intent.ACTION_VIEW,
-                                Uri.parse(getString(R.string.page_address)));
-                startActivity(browserIntent);
-            }
-        }*/
 
         mainFragmentViewModel.verApk.observe(viewLifecycleOwner, Observer {
             if (it!=null) {

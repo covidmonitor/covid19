@@ -211,13 +211,7 @@ class ViewFragment : Fragment() {
     }
     private fun setLineChart(dailys: Pair<String, List<Series>>, binding: FragmentViewBinding) {
         val DataSet =LineDataSet(
-            dailys.second.mapIndexed { index, dailyItem ->
-                Entry(
-                    dailyItem.x,
-                    dailyItem.y,
-                    dailyItem.Nazwa
-                )
-            }, dailys.first
+            dailys.second.mapIndexed { index, dailyItem ->Entry(dailyItem.x,dailyItem.y,dailyItem.Nazwa)}, dailys.first
         ).apply {
             setLineChartStyle(this, R.color.colorItemGrean)
         }
@@ -243,11 +237,12 @@ class ViewFragment : Fragment() {
             xAxis.enableGridDashedLine(10f, 10f, 2f)
 
             var lastDate: String? = null
-            val dates = dailys.second.map { it.Nazwa.takeLast(2) }
+            val dates = dailys.second.map { val tmpData=it.Nazwa.takeLast(5);
+                tmpData.takeLast(2)+"."+tmpData.take(2)} //FormatDate
             xAxis.valueFormatter = object : IndexAxisValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
-                    if (lastDate == dates[value.toInt()]) return ""
-                    lastDate = dates[value.toInt()]
+/*                    if (lastDate == dates[value.toInt()]) return ""
+                    lastDate = dates[value.toInt()]*/
                     return dates[value.toInt()]
                 }
             }
