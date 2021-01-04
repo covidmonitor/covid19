@@ -243,7 +243,7 @@ class ViewFragment : Fragment() {
                 override fun getFormattedValue(value: Float): String {
 /*                    if (lastDate == dates[value.toInt()]) return ""
                     lastDate = dates[value.toInt()]*/
-                    return dates[value.toInt()]
+                    return if(value.toInt()<dates.size) dates[value.toInt()] else ""
                 }
             }
 
