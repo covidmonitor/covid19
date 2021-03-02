@@ -65,13 +65,13 @@
     <string name="inserted_string">Nowe dane o COVID</string>
     <string name="inserted_rows">dodano dane za %s </string>
     <string name="reinserted_rows">zsynchronizowane dane za %s </string>
-    <string name="pozytywne">pozytywne  %s </string>
-    <string name="pozytywne10tys">pozy. na 10tys.  %s </string>
-    <string name="pozytywne10tys7">średnia pozy. na 10tys.  %s </string>
-    <string name="smiertelne">Śmiertelne   %s </string>
+    <string name="pozytywne">%s pozytywne</string>
+    <string name="pozytywne10tys">%s pozy.na 10tys.</string>
+    <string name="pozytywne10tys7">%s śr.pozy. na 10tys.</string>
+    <string name="smiertelne">%s śmiertelne</string>
 
-    <string name="oboNow">Obowiązujące</string>
-    <string name="oboNext">Planowane</string>
+    <string name="oboNow">Obecne</string>
+    <string name="oboNext">Plan</string>
 
     <string name="up">↑</string>
     <string name="down">↓</string>

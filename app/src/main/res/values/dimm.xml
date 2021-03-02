@@ -2,4 +2,6 @@
 <resources>
     <dimen
         name="textView">18sp</dimen>
+    <dimen
+        name="textViewLand">16sp</dimen>
 </resources>

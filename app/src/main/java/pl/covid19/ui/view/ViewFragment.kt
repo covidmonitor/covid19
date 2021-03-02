@@ -66,9 +66,7 @@ class ViewFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(args.viewCovidDate))
-        binding.viewtabLayout.addTab(
-            binding.viewtabLayout.newTab().setText(getString(R.string.nameOgraniczenia))
-        )
+        binding.viewtabLayout.addTab(binding.viewtabLayout.newTab().setText(getString(R.string.nameOgraniczenia)))
 
         binding.viewtabLayout.tabGravity = TabLayout.GRAVITY_FILL
         binding.viewtabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -89,6 +87,8 @@ class ViewFragment : Fragment() {
             it?.let {
                 //Animator.animateIncrementNumber(binding.Liczba,it.govpl.Liczba)
                 viewFragmentViewModel.fazaUrl = it.fazy.idFazyKey.toString()
+                viewFragmentViewModel.idGus = it.area.idGus.toString()
+
                 //TODO 6 przenieść do  XML
                 if (it.fazy.Color != null) {
                     binding.smiertelne.setBackgroundColor(Color.parseColor(it.fazy.Color))
@@ -178,21 +178,18 @@ class ViewFragment : Fragment() {
 
         viewFragmentViewModel.oboSwNow.observe(viewLifecycleOwner, Observer {
             if (it and (viewFragmentViewModel.links.size>=1))
-                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[0], binding,false)
-            else
-                setObostrzenia(BASEAPI_URL + "now.html", binding)
-                
+                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[0]+viewFragmentViewModel.idGus.toString(), binding)
         })
 
         viewFragmentViewModel.oboSwNext.observe(viewLifecycleOwner, Observer {
             if (it and (viewFragmentViewModel.links.size>=viewFragmentViewModel.fazaUrl.toInt()+1))
-                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[viewFragmentViewModel.fazaUrl.toInt() + 1],binding, false)
+                setObostrzenia(BASEAPI_URL + viewFragmentViewModel.links[viewFragmentViewModel.fazaUrl.toInt() + 1],binding)
         })
 
         return binding.root
     }
 
-    private fun setObostrzenia(url: String, binding: FragmentViewBinding, cache: Boolean=true) {
+    private fun setObostrzenia(url: String, binding: FragmentViewBinding) {
         binding.obostrzenia.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
                 if (Uri.parse(url).host == BASEHOST_URL) {
@@ -203,7 +200,7 @@ class ViewFragment : Fragment() {
                 return true
             }
         }
-        enableJava(binding.obostrzenia.settings,cache)
+        enableJava(binding.obostrzenia.settings)
         if (CovidMonitorApplication.Variables.isNetworkConnected)
             binding.obostrzenia.loadUrl(url)
         else

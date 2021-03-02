@@ -74,13 +74,14 @@ fun atPlRange():Boolean
     val d =java.sql.Time.valueOf(formatter.format(Calendar.getInstance().getTime()))
     return d.after(min) && d.before(max)
 }
-fun enableJava(webSettings: WebSettings, cache: Boolean = true) {
+fun enableJava(webSettings: WebSettings) {
         webSettings.setAppCacheEnabled(true)
-    if (cache)
+    /*if (cache)
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK)
     else
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE)
-
+*/
+    webSettings.setCacheMode(WebSettings.LOAD_DEFAULT)
    webSettings.apply {
         javaScriptEnabled = true
         domStorageEnabled = true

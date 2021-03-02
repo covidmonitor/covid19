@@ -6,8 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import pl.covid19.repository.CovidRepository
 
-@Database(entities = [AreaDB::class, GOVPLXDB::class, FazyDB::class, VersionDB::class], version = 2, exportSchema = true)
+@Database(entities = [AreaDB::class, GOVPLXDB::class, FazyDB::class, VersionDB::class], version = 3, exportSchema = true)
 abstract class CovidDatabase : RoomDatabase() {
 
     abstract val covidDao: DatabaseDao
@@ -23,6 +26,14 @@ abstract class CovidDatabase : RoomDatabase() {
                 database.execSQL(createSql)
             }
         }
+
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                val createSql ="DELETE FROM govplx"
+                database.execSQL(createSql)
+            }
+        }
+
         fun getInstance(context: Context): pl.covid19.database.CovidDatabase {
             synchronized(this) {
                 var instance = INSTANCE
@@ -31,6 +42,7 @@ abstract class CovidDatabase : RoomDatabase() {
                             // https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929
                             //.fallbackToDestructiveMigration()
                             .addMigrations(MIGRATION_1_2)
+                            .addMigrations(MIGRATION_2_3)
                             .build()
                     INSTANCE = instance
                 }

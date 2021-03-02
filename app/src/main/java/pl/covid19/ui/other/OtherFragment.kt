@@ -35,7 +35,7 @@ class OtherFragment : Fragment() {
         binding.sampleList.adapter = arrayAdapter
         binding.sampleList.setOnItemClickListener { parent, view, position, id ->
             when(sampleList[position]) {
-                SHARE_NAME -> shareMaessage(getString(R.string.shareInfo))
+                SHARE_NAME -> shareMessage(getString(R.string.shareInfo))
                 PLANED_NAME -> startUrl(PLANED_URL)
                 PRIVACY_NAME->startUrl(PRIVACY_URL)
                 ABOUT_NAME->startUrl(ABOUT_URL)
@@ -58,7 +58,7 @@ class OtherFragment : Fragment() {
             Snackbar.make(it, "Rozpoczęto synchronizację danych", Snackbar.LENGTH_LONG).show()}
         return binding.root
     }
-    fun shareMaessage(text: String)
+    fun shareMessage(text: String)
     {
         val intent2 = Intent()
         intent2.setAction(Intent.ACTION_SEND)

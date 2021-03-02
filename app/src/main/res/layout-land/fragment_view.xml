@@ -16,7 +16,7 @@
             android:onClick="@{()->vm.oboSwitchNow()}"
             android:text="@string/oboNow"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/oboSwitchNow"
             app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/oboSwitchNow"
@@ -30,7 +30,7 @@
             android:onClick="@{()->vm.oboSwitchNext()}"
             android:text="@string/oboNext"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/oboSwitchNext"
             app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/oboSwitchNext"
@@ -43,9 +43,9 @@
             android:onClick="@{()->vm.switchLiczba()}"
             android:text="@{@string/pozytywne(String.valueOf(vm.areaGovplx.govpl.Liczba))}"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba" />
 
@@ -56,7 +56,7 @@
             android:onClick="@{()->vm.switchLiczba10tys()}"
             android:text="@{@string/pozytywne10tys(String.valueOf(vm.areaGovplx.govpl.Liczba10tys))}"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba10tys"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba10tys"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys" />
@@ -67,10 +67,10 @@
             android:layout_height="0dp"
             android:onClick="@{()->vm.switchLiczba10tys()}"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:evalAvgIndicator10="@{vm.areaGovplx}"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba10tys"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/Liczba10tys"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys" />
 
@@ -81,9 +81,9 @@
             android:onClick="@{()->vm.switchLiczba10tys7()}"
             android:text="@{@string/pozytywne10tys7(String.valueOf(vm.areaGovplx.govpl.Liczba10tysAvg7))}"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/switchLiczba10tys7"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/switchLiczba10tys7"
             app:layout_constraintTop_toTopOf="@+id/switchLiczba10tys7" />
 
@@ -94,20 +94,20 @@
             android:onClick="@{()->vm.switchSmiertelne()}"
             android:text="@{@string/smiertelne(String.valueOf(vm.areaGovplx.govpl.WszystkieSmiertelne))}"
             android:textColor="@android:color/background_light"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             app:layout_constraintBottom_toBottomOf="@+id/switchSmiertelne"
-            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="@id/guidelineObos"
             app:layout_constraintStart_toEndOf="@+id/switchSmiertelne"
             app:layout_constraintTop_toTopOf="@+id/switchSmiertelne" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/oboSwitchNow"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:background="@color/colorPrimaryDark"
             android:checked="@{vm.oboSwNow}"
             android:onClick="@{()->vm.oboSwitchNow()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewtabLayout"
@@ -116,11 +116,11 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/oboSwitchNext"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:background="@color/colorPrimaryDark"
             android:checked="@{vm.oboSwNext}"
             android:onClick="@{()->vm.oboSwitchNext()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/oboSwitchNow"
@@ -131,10 +131,10 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchLiczba"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:checked="@{vm.swLiczba}"
             android:onClick="@{()->vm.switchLiczba()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewtabLayout"
@@ -143,10 +143,10 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchLiczba10tys"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:checked="@{vm.swLiczba10tys}"
             android:onClick="@{()->vm.switchLiczba10tys()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/switchLiczba"
@@ -156,10 +156,10 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchLiczba10tys7"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:checked="@{vm.swLiczba10tys7}"
             android:onClick="@{()->vm.switchLiczba10tys7()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/switchLiczba10tys"
@@ -168,10 +168,10 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSmiertelne"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/textView"
+            android:layout_height="@dimen/textViewLand"
             android:checked="@{vm.swSmiertelne}"
             android:onClick="@{()->vm.switchSmiertelne()}"
-            android:textSize="@dimen/textView"
+            android:textSize="@dimen/textViewLand"
             android:theme="@style/switchStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/switchLiczba10tys7"
@@ -202,21 +202,12 @@
             app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.40"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineObos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintGuide_percent="0.33"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -244,7 +235,7 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintStart_toEndOf="@id/guidelineObos"
             app:layout_constraintTop_toBottomOf="@id/viewtabLayout" />
 
 

@@ -63,7 +63,7 @@ class CovidRepository(private val database: CovidDatabase, ctx: Context) {
             CoroutineScope(Dispatchers.IO).launch(handler) {
                 getGovplx()
                 getFazyVersionDB()
-                showNotification(context.getString(R.string.reinserted_rows, "Od 24-11-2020 do " + TodayToStringSql(0)))
+                showNotification(context.getString(R.string.reinserted_rows, "Od 01-12-2020 do " + TodayToStringSql(0)))
             }
         else
         CoroutineScope(Dispatchers.IO).launch(handler) {
@@ -80,10 +80,9 @@ class CovidRepository(private val database: CovidDatabase, ctx: Context) {
                             }
                 }
             }
-            //TODO chceck on refresh all why 2 times call
             if (database.covidDao.getCountFazy()==0) {
                 getFazyVersionDB(false)
-                showNotification(context.getString(R.string.inserted_rows, "Od 24-11-2020 do " + TodayToStringSql(0)))
+                showNotification(context.getString(R.string.inserted_rows, "Od 01-12-2020 do " + TodayToStringSql(0)))
             }
         }
     }

@@ -24,6 +24,7 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
     var verObo = databaseDao.getVersionOgraniczeniaWithData(TodayToStringSql())
 
     var fazaUrl = "-99"
+    var idGus = ""
     var links  = emptyArray<String>()
 
     private var _swLiczba = MutableLiveData<Boolean>()
@@ -147,6 +148,7 @@ class ViewFragmentViewModel(val databaseDao: DatabaseDao, app: Application, val 
     }
 
     fun setDectription() {
+        oboSwitchNow()
         _showGroup.value=false
         _showDesc.value=true
     }

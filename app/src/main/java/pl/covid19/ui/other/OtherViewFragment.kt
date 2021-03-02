@@ -16,14 +16,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.coroutines.*
 import pl.covid19.R
 import pl.covid19.database.CovidDatabase
 import pl.covid19.databinding.FragmentOtherviewBinding
-import pl.covid19.util.Constants
-import pl.covid19.util.Constants.PRIVACY_NAME
 import pl.covid19.util.Constants.PRIVACY_URL
-import pl.covid19.util.enableJava
 
 
 class OtherViewFragment : Fragment() {
